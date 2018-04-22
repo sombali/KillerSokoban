@@ -67,6 +67,16 @@ public class Warehouse {
         return sizeColumn;
     }
 
+    public Game game;
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
     /**
      * Beolvassa a pálya txt fájlt, majd inicializálja a pályát belőle
      * @param file A beolvasandó pálya fájlának neve
@@ -406,7 +416,9 @@ public class Warehouse {
      */
     public void setPushableBoxes(int num) {
         pushableBoxes += num;
-        if(pushableBoxes == 0);
+        if(pushableBoxes == 0) {
+            getGame().endGame();
+        }
     }
 
     /**
