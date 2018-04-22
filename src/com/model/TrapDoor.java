@@ -94,9 +94,9 @@ public class TrapDoor extends Hole {
 
     public void getDescription() {
         if(this.state.equals(TrapDoorState.CLOSED)) {
-            System.out.println("?");
+            System.out.print("?");
         } else {
-            System.out.println("!");
+            System.out.print("!");
         }
     }
 }

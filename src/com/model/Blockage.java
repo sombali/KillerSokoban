@@ -31,4 +31,7 @@ Blockage extends Element{
         return false;
     }
 
+    public void getDescription() {
+
+    }
 }

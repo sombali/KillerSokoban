@@ -14,7 +14,7 @@ public class Honey extends Tools {
     }
 
     public void getDescription() {
-        System.out.println("h");
+        System.out.print("h");
     }
 
 }

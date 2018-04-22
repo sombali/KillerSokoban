@@ -154,7 +154,7 @@ public class Field {
 
 
     public void getDescription() {
-        System.out.println(".");
+        System.out.print(".");
     }
 
 

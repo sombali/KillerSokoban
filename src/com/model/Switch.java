@@ -55,6 +55,6 @@ public class Switch extends Field {
     }
 
     public void getDescription() {
-        System.out.println("s");
+        System.out.print("s");
     }
 }

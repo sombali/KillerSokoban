@@ -30,7 +30,7 @@ public class Box extends Pushable{
     }
 
     public void getDescription() {
-        System.out.println("x");
+        System.out.print("x");
     }
 }
 

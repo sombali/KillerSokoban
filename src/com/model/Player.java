@@ -217,7 +217,7 @@ public abstract class Player extends Element{
     }
 
     public void getDescription() {
-        System.out.println(this.getName());
+
     }
 
 }

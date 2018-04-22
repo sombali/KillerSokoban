@@ -62,6 +62,6 @@ public class Hole extends Field{
     }
 
     public void getDescription() {
-        System.out.println("O");
+        System.out.print("O");
     }
 }

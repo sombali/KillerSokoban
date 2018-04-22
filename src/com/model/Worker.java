@@ -32,4 +32,8 @@ public class Worker extends Player {
 
 
     }
+
+    public void getDescription() {
+        System.out.print(this.getName());
+    }
 }
