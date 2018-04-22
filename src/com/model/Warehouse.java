@@ -109,11 +109,11 @@ public class Warehouse {
          * A következő beolvasásánál pedig feltölti a 2D-s mátrixot
          */
         br = new BufferedReader(new FileReader(file));
-        while((line=br.readLine())!=null){
+        while((line=br.readLine())!=null) {
 
             String[] a = line.split(" ");
-            for (int i = 0; i <a.length ; i++) {
-                map[row][i]=melyik_elem(a[i]);
+            for (int i = 0; i < a.length; i++) {
+                map[row][i] = melyik_elem(a[i]);
                 System.out.print(a[i]);
             }
 
@@ -121,57 +121,6 @@ public class Warehouse {
 
             System.out.print("\n");
 
-            /*
-            for (int i = 1; i <a.length ; i++) {
-                Field f0 =  melyik_elem(a[i]);
-                if(row==0) {
-                    Field field1 = melyik_elem(palya[row][i - 1]);
-
-                    field1.setNeighbors(Direction.THIRD, f0);//szomszédok beállítása
-                    f0.setNeighbors(Direction.FIRST, f0);
-
-                    field1.setNeighbors(Direction.SECOND,null);
-                    f0.setNeighbors(Direction.SECOND,null);
-                    if(i==1){
-                        field1.setNeighbors(Direction.FIRST,null);
-
-                    }
-                    else if(i==a.length-1){
-                        f0.setNeighbors(Direction.FIRST,null);
-
-                    }
-
-                }
-                else{
-                    Field field1 = melyik_elem(palya[row][i - 1]);
-
-                    field1.setNeighbors(Direction.THIRD, f0);//szomszédok beállítása
-                    f0.setNeighbors(Direction.FIRST, f0);
-
-                    Field f02=melyik_elem(palya[row-1][i]);
-                    Field field12=melyik_elem(palya[row-1][i-1]);
-
-                    field1.setNeighbors(Direction.SECOND,field12);//lenti szomszéd, fenti szomszéd
-                    f0.setNeighbors(Direction.SECOND,f02);
-
-                    f02.setNeighbors(Direction.FOURTH,f0);
-                    field12.setNeighbors(Direction.FOURTH,field1);
-
-
-                    if(i==1){
-                        field1.setNeighbors(Direction.FIRST,null);
-
-                    }
-                    else if(i==a.length-1){
-                        f0.setNeighbors(Direction.FIRST,null);
-
-                    }
-
-                }
-
-
-                }
-            row++;*/
         }
 
         /**
@@ -326,11 +275,12 @@ public class Warehouse {
                 Hole hole = new Hole();
                 addField(hole);
                 f = hole;
-                return hole;
+                break;
             case "X":
                 Field field5 = new Field();
                 Box box = new Box();
                 setPushableBoxes(1);
+                box.setField(field5);
                 field5.setElement(box);
                 f=field5;
                 addField(field5);
