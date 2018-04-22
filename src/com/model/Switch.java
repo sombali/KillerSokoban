@@ -9,14 +9,21 @@ public class Switch extends Field {
     /**
      * A mezőhőz tartozó csapóajtó
      */
-    private TrapDoor trapDoor = new TrapDoor();
+    private TrapDoor trapDoor;
+
+    /**
+     * A mezőhoz tartozó csapóajtót állítja be
+     * @param trapDoor a mezőhöz tartozó csapóajtó
+     */
+    public void setTrapDoor(TrapDoor trapDoor) {
+        this.trapDoor = trapDoor;
+    }
 
     /**
      * Megadja a hozzátartozó csapóajtót
      * @return csapóajtó
      */
     public TrapDoor getTrapDoor() {
-        System.out.println("-->[Switch :s].getTrapDoor()");
         return trapDoor;
     }
 
@@ -27,7 +34,6 @@ public class Switch extends Field {
      */
     @Override
     public void stepOnIt(Pushable pushable) {
-        System.out.println("-->[Switch :s].stepOnIt()");
         getTrapDoor().switchState();
 
         Element element = trapDoor.getElement();
@@ -44,7 +50,6 @@ public class Switch extends Field {
      */
     @Override
     public void removeElement(Pushable pushable) {
-        System.out.println("-->[Switch :s].removeElement(box)");
         super.removeElement(pushable);
         trapDoor.switchState();
     }

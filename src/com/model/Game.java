@@ -1,5 +1,9 @@
 package com.model;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
+
 /**
  * A játékot kezelő osztály
  *
@@ -16,15 +20,24 @@ public class Game
     /**
      * Elindítja a játékot
      */
-    public void startGame() {
-        warehouse.initialize();
+    public void startGame(String map) throws IOException {
+        warehouse.initialize(map);
     }
 
     /**
      * Befejezi a játékot
      */
     public void endGame() {
-
+        ArrayList<Worker> players = warehouse.getPlayerList();
+        Worker player1 = players.get(0);
+        Worker player2 = players.get(1);
+        if(player1.getPoint() == player2.getPoint()) {
+            //TODO
+        } else if(player1.getPoint() > player2.getPoint()) {
+            player1.win();
+        } else {
+            player2.win();
+        }
     }
 
     /**

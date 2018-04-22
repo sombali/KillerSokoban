@@ -10,24 +10,39 @@ import java.util.List;
 
 public abstract class Player extends Element{
     /**
-     * @param name A játékos nevét tárolja.
+     * A játékos nevét tárolja.
      */
     private String name;
 
     /**
+     * A jatekos nevenek beallitasa
+     * @param name a jatekos neve
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
      * @param point A játékos pontját tárolja.
      */
-    private int point;
+    private int point = 0;
 
     /**
      * A jatekos ereje.
      */
     private int strength;
 
+    /**
+     * Jatekos erejenek lekerdezese
+     * @return jatekos ereje
+     */
     public int getStrength() {
         return strength;
     }
 
+    /**
+     * Jatekos erejenek beallitasa
+     */
     public void setStrength(int strength) {
         this.strength = strength;
     }
@@ -43,12 +58,28 @@ public abstract class Player extends Element{
     private List<Oil> oil = new ArrayList<>();
 
     public Player() {
+        setStrength(12);
         for(int i = 0; i < 3; i++) {
             honey.add(new Honey());
             oil.add(new Oil());
         }
     }
-
+    /**
+     * Ezzel rakjuk le a megfelelo mezore a Mezet
+     */
+    public void throwHoney(){
+        Tools h= getHoney();
+        field.setTools(h);
+        h.setField(this.field);
+    }
+    /**
+     * Ezzel rakjuk le a megfelelo mezore az Olajat
+     */
+    public void throwOil(){
+        Tools h=getOil();
+        field.setTools(h);
+        h.setField(this.field);
+    }
     /**
      * Visszaad egy mezet es torli a listabol.
      * @return mez
@@ -68,10 +99,12 @@ public abstract class Player extends Element{
         oil.remove(0);
         return o;
     }
+
     //mezek szamanak kiiratasahoz kell
     public List<Honey> getHoneyList() {
         return honey;
     }
+
     //olajak szamanak kiiratasahoz kell
     public List<Oil> getOilList() {
         return oil;
@@ -83,13 +116,21 @@ public abstract class Player extends Element{
      *                  A játékos mozgását valósítja meg.
      */
     public void move(Direction direction) {
-
+        //...
     }
 
+    /**
+     * A jatekos pontjainak lekerdezese
+     * @return
+     */
     public int getPoint() {
         return point;
     }
 
+    /**
+     * Jatekos nevenek lekerdezese
+     * @return
+     */
     public String getName() {
         return name;
     }
@@ -98,12 +139,7 @@ public abstract class Player extends Element{
      * Ha meghal a játékos(pl: lyukba lép) akkor hívódik meg.
      */
     public void die() {
-        System.out.println("-->[Worker :w].die()");
-        System.out.println("YOU DIED!");
-        System.out.println("<-----");
-
-        //ezt vagy nullozni kene vagy pedig ismernie kene a warehouset es a removeplayert meghivni.
-
+        getField().getWarehouse().removePlayer(this);
     }
 
     /**
@@ -111,7 +147,6 @@ public abstract class Player extends Element{
      * @param point A játékos pontszámának megváltoztatása a legfőbb feladata a függvénynek.
      */
     public void addPoints(int point) {
-        System.out.println("[Worker :w].addPoint(point)");
         this.point += point;
     }
 
@@ -120,33 +155,29 @@ public abstract class Player extends Element{
      * mikor élni kíván vele egy játékos ez a metódus hívódik meg.
      */
     public void surrender() {
-        System.out.println("-->[Worker :w1].surrend");
-        System.out.println("Player1 LOST!");
-        System.out.println("Player2 WON!");
-        System.out.println("<-----");
+        ArrayList<Worker> players = getField().getWarehouse().getPlayerList();
+        if(this.equals(players.get(0))) {
+            players.get(1).win();
+        } else {
+            players.get(0).win();
+        }
     }
 
     /**
      * A függvény meghívódik ha az egyik játékos nyert, tehát az összes saját területén láda áll.
      */
     public void win() {
-        System.out.println("-->[Worker :w1].win");
-        System.out.println("Player1 WIN!");
-        System.out.println("Player2 LOST!");
-        System.out.println("<-----");
+        //TODO
     }
-
-    //szekvencia alapjan kitoltottem @Bazsi
-    //az egy dolog de ki is kene iratni draga Bazsi @Szili
 
     /**
      *
      * @param pushable Egy tolható objektum.
      * @param direction Egy adott irány.
+     * @param s A tárgyak együtte surlódása
      * @return true-val tér vissza ha a lépés sikeres volt, false-szal ha nem.
      */
-    public boolean hit(Pushable pushable, Direction direction) {
-        System.out.println("-->[Worker :w].hit(box, direction)");
+    public boolean hit(Pushable pushable, Direction direction, int s) {
         Field nextfield = getField().getNeighbors(direction);
         Element element = nextfield.getElement();
 
@@ -156,7 +187,6 @@ public abstract class Player extends Element{
             return true;
         } else {
             step(nextfield);
-            System.out.println("<-- true");
             return true;
         }
     }
@@ -168,9 +198,7 @@ public abstract class Player extends Element{
      * @param direction Egy adott irány
      * @return false-al tér vissza
      */
-    public  boolean hit(Player player, Direction direction) {
-        System.out.println("-->[Worker :w].hit(worker, direction)");
-        System.out.println("<-- false == Nem tudsz ide lepni!");
+    public boolean hit(Player player, Direction direction, int s) {
         return false;
     }
 
@@ -183,11 +211,9 @@ public abstract class Player extends Element{
      */
     //ideraktam a Workerbol a stepet, gondolvan hogy csak valositsa meg ezt @Bazsi (Zsir)
     public void step(Field nextField) {
-        System.out.println("->[Worker :w].step(f2)");
         field.removeElement(this);
         nextField.acceptElement(this);
         nextField.stepOnIt(this);
-        System.out.println("<-");
     }
 
 }

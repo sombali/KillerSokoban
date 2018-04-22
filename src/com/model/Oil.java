@@ -1,16 +1,18 @@
 package com.model;
 
+/**
+ * Olaj osztaly, egy mezore dobva csokkenti annak surlodasat, mezre dobva kiuti annak hatasat
+ */
 public class Oil extends Tools {
+
     /**
-     * A megvaltoztatott surlodas.
+     * Olaj konstruktor, a mezőnek növeli a surlódását 5el.
      */
-    private int changeFriction;
-
-    public int getChangeFriction() {
-        return changeFriction;
+    public Oil() {
+        setChangeFriction(-2);
     }
 
-    public void setChangeFriction(int changeFriction) {
-        this.changeFriction = changeFriction;
-    }
+
+
+
 }
