@@ -19,15 +19,15 @@ public class Worker extends Player {
 
         Field nextfield =  getField().getNeighbors(direction);
         Element nextElement = nextfield.getElement();
-        //nextfield.setElement(nextElement);
-
+        nextfield.setElement(nextElement);
+        
         if(nextElement != null) {
             nextElement.setField(nextfield);
         }
 
         boolean allow;
         if(nextElement != null) {
-            allow =  nextElement.hit(this, Direction.FIRST,getStrength());
+            allow =  nextElement.hit(this, Direction.FIRST, 0);
             if(allow==true){
                 step(nextfield);
             }

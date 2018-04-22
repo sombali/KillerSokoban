@@ -9,7 +9,23 @@ public class TargetField extends Field {
     /**
      * A mezőhöz tartozó játékos
      */
-    Player player = new Worker();
+    private Player player;
+
+    /**
+     * A mezőhöz tartozó játékos beállítása
+     * @param player a mezőhöz tartozó játékos
+     */
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    /**
+     * A mezőhöz tartozó játékos lekérdezése
+     * @return a mezőhöz tartozó játékos
+     */
+    public Player getPlayer() {
+        return player;
+    }
 
     /**
      * A mezőre tolható elem lép, a játékos pontot kap
@@ -17,7 +33,6 @@ public class TargetField extends Field {
      */
     @Override
     public void stepOnIt(Pushable pushable) {
-        System.out.println("[TargetField :targetField].stepOnIt(box)");
         player.addPoints(10);
     }
 
@@ -26,7 +41,6 @@ public class TargetField extends Field {
      * @param pushable a mezőről lelépő tolható elem
      */
     public void removeElement(Pushable pushable) {
-        System.out.println("[TargetField :targetField].removeElement(box)");
         super.removeElement(pushable);
         player.addPoints(-10);
     }
