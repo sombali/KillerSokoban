@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.File;
 
 /**
  * A játékban magát a pályát képviseli, annak tulajdonságaival, illetve metódusaival.
@@ -57,7 +58,9 @@ public class Warehouse {
     public void initialize(String file) throws IOException {
 
         int row=0;
+        File f = new File(file);
         FileReader fr = new FileReader(file); // itt persze majd azt a mapot olvassa be amit éppen akar(3közül valamelyik. MEGOLDVA
+        System.out.println(f.getAbsolutePath());
         BufferedReader br=new BufferedReader(fr);;
         String line;
         int sizeRow=0;
@@ -86,6 +89,8 @@ public class Warehouse {
                 map[row][i]=melyik_elem(a[i]);
                 System.out.print(a[i]);
             }
+
+            row++;
 
             System.out.print("\n");
 
@@ -263,6 +268,7 @@ public class Warehouse {
 
                 //vegso megoldasnal majd adhatunk custom nevet is akar
                 player_1.setName("player1");
+                player_1.setField(field2);
                 field2.setElement(player_1);
                 playerList.add(player_1);
 
@@ -275,6 +281,7 @@ public class Warehouse {
 
                 //vegso megoldasnal majd adhatunk custom nevet is akar
                 player_2.setName("player2");
+                player_2.setField(field3);
                 field3.setElement(player_2);
                 playerList.add(player_2);
 

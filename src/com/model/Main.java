@@ -31,6 +31,7 @@ public class Main {
 
            if(command.isEmpty())
                break;
+
            String[] splittedString = command.split(" ");
            if(splittedString[0].equals("loadmap")) {
                game.startGame(splittedString[1]);
@@ -60,9 +61,9 @@ public class Main {
             }
         } else if(splittedString[0].equals("surrend")) {
             if(splittedString[1].equals("1")) {
-                player1.surrender();
+                player1.surrender(player2);
             } else if(splittedString[1].equals("2")) {
-                player2.surrender();
+                player2.surrender(player1);
             }
         } else if(splittedString[0].equals("droptool")) {
             if(splittedString[1].equals("1")) {
