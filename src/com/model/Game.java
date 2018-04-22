@@ -1,5 +1,7 @@
 package com.model;
 
+import java.io.IOException;
+
 /**
  * A játékot kezelő osztály
  *
@@ -16,8 +18,8 @@ public class Game
     /**
      * Elindítja a játékot
      */
-    public void startGame() {
-        warehouse.initialize();
+    public void startGame(String map) throws IOException {
+        warehouse.initialize(map);
     }
 
     /**

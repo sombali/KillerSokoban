@@ -20,7 +20,8 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         Game game = new Game();
-        game.startGame();
+
+
         //Egyszeru menu
         //Scanner in = new Scanner(System.in); //Csak beolvas
         /*
@@ -38,6 +39,7 @@ public class Main {
             testPlayer.win();
         }*/
 
+
         InputStreamReader isr = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(isr);
 
@@ -48,6 +50,11 @@ public class Main {
             stringList.add(command);
         }
 
+
+
+
+        // ezt kicsit később kéne. a 66. sorban állítom be a pályát csak. azt azért mert át kell vennie paraméterként hogy melyik mapot allítsa és azt ott írtad meg.
+        //Ezért át kéne oda rakni,mert így hibát dob a kövi sorokban
         Player player1 = game.getWarehouse().getPlayerList().get(0);
         Player player2 = game.getWarehouse().getPlayerList().get(1);
 
@@ -56,6 +63,11 @@ public class Main {
             String[] splittedString = stringList.get(i).split(" ");
                 if(splittedString[0].equals("loadmap")) {
                     //TODO
+                   // game.warehouse.initialize(splittedString[1]);
+                    game.startGame(splittedString[1]);// feltölti a pályát, beállítja a szomszédokat. A splittedString[1] a pályát tartalmazó txt lesz igaz?
+
+
+
                 } else if(splittedString[0].equals("stepplayer")) {
                     if(splittedString[1].equals("1")) {
                         if(splittedString[2].equals("1")) {
