@@ -25,6 +25,10 @@ public class Warehouse {
      */
     private List<Field> fields;
 
+
+    public List<Switch> sw=new ArrayList<>();
+    public List<TrapDoor>tr=new ArrayList<>();
+
     /**
      * A játékosokat tároló lista.
      */
@@ -105,10 +109,13 @@ public class Warehouse {
 
 
                 }
-
+            row++;
             }
 
-            row++;
+
+
+
+
         }
 
 
@@ -188,6 +195,7 @@ public class Warehouse {
             case "S":
                 Switch s = new Switch();
                 f=s;
+                sw.add(s);
                 addField(s);
 
                 break;
@@ -213,9 +221,14 @@ public class Warehouse {
             case "!":
                 TrapDoor trap = new TrapDoor();
                 f=trap;
+                tr.add(trap);
                 addField(trap);
                 break;
-
+            case "F":
+                TargetField tar = new TargetField();
+                f=tar;
+                addField(tar);
+                break;
         }
         return f;
     }
