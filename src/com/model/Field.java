@@ -22,25 +22,6 @@ public class Field {
     Direction direction;
 
     /**
-     * A mezo surlodasa
-     */
-    private int friction;
-
-    /**
-     * A mezo surlodasanak lekerdezese
-     * @return a mezo surlodasi egyutthatoja
-     */
-    public int getFriction() {return friction;}
-
-    /**
-     * A mezo surlodasanak beallitasa
-     * @param friction a mezo surlodasa
-     */
-    public void setFriction(int friction) {
-        this.friction = friction;
-    }
-
-    /**
      * A szomszédos mezők, irány szerint tárolva
      */
     private Map<Direction, Field> fieldMap = new HashMap<>();
@@ -101,10 +82,6 @@ public class Field {
      */
     public void setElement(Element element) {
         this.element = element;
-    }
-
-    public Field() {
-        setFriction(0);
     }
 
     /**

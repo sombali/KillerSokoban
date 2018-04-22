@@ -10,7 +10,7 @@ public class Wall extends Blockage {
      * Játékos szeretné tolni a továbbhaladás irányába a falat
      * @param player játékos, ami az fal mezőjére kíván lépni
      * @param direction a továbbhaladás iránya
-     * @param s a surlodasi egyutthato
+     * @param s átadott erő
      * @return mindig false-al tér vissza, mert Blockage elem nem mozgatható
      */
     @Override
@@ -22,7 +22,7 @@ public class Wall extends Blockage {
      * Játékos szeretné tolni a továbbhaladás irányába a falat
      * @param pushable tolható objektum, ami az fal mezőjére kíván lépni
      * @param direction a továbbhaladás iránya
-     * @param s a surlodasi egyutthato
+     * @param s átadott erő
      * @return mindig false-al tér vissza, mert Blockage elem nem mozgatható
      */
     @Override
