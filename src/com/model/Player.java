@@ -1,6 +1,5 @@
 package com.model;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -98,9 +97,7 @@ public abstract class Player extends Element{
      * Ha meghal a játékos(pl: lyukba lép) akkor hívódik meg.
      */
     public void die() {
-        System.out.println("-->[Worker :w].die()");
-        System.out.println("YOU DIED!");
-        System.out.println("<-----");
+    //TODO
 
         //ezt vagy nullozni kene vagy pedig ismernie kene a warehouset es a removeplayert meghivni.
 
@@ -111,7 +108,6 @@ public abstract class Player extends Element{
      * @param point A játékos pontszámának megváltoztatása a legfőbb feladata a függvénynek.
      */
     public void addPoints(int point) {
-        System.out.println("[Worker :w].addPoint(point)");
         this.point += point;
     }
 
@@ -120,20 +116,14 @@ public abstract class Player extends Element{
      * mikor élni kíván vele egy játékos ez a metódus hívódik meg.
      */
     public void surrender() {
-        System.out.println("-->[Worker :w1].surrend");
-        System.out.println("Player1 LOST!");
-        System.out.println("Player2 WON!");
-        System.out.println("<-----");
+        //TODO
     }
 
     /**
      * A függvény meghívódik ha az egyik játékos nyert, tehát az összes saját területén láda áll.
      */
     public void win() {
-        System.out.println("-->[Worker :w1].win");
-        System.out.println("Player1 WIN!");
-        System.out.println("Player2 LOST!");
-        System.out.println("<-----");
+        //TODO
     }
 
     //szekvencia alapjan kitoltottem @Bazsi
@@ -145,8 +135,8 @@ public abstract class Player extends Element{
      * @param direction Egy adott irány.
      * @return true-val tér vissza ha a lépés sikeres volt, false-szal ha nem.
      */
-    public boolean hit(Pushable pushable, Direction direction) {
-        System.out.println("-->[Worker :w].hit(box, direction)");
+    public boolean hit(Pushable pushable, Direction direction,int s) {
+        //System.out.println("-->[Worker :w].hit(box, direction)");
         Field nextfield = getField().getNeighbors(direction);
         Element element = nextfield.getElement();
 
@@ -156,7 +146,7 @@ public abstract class Player extends Element{
             return true;
         } else {
             step(nextfield);
-            System.out.println("<-- true");
+           // System.out.println("<-- true");
             return true;
         }
     }
@@ -168,9 +158,7 @@ public abstract class Player extends Element{
      * @param direction Egy adott irány
      * @return false-al tér vissza
      */
-    public  boolean hit(Player player, Direction direction) {
-        System.out.println("-->[Worker :w].hit(worker, direction)");
-        System.out.println("<-- false == Nem tudsz ide lepni!");
+    public  boolean hit(Player player, Direction direction,int s) {
         return false;
     }
 
@@ -183,11 +171,11 @@ public abstract class Player extends Element{
      */
     //ideraktam a Workerbol a stepet, gondolvan hogy csak valositsa meg ezt @Bazsi (Zsir)
     public void step(Field nextField) {
-        System.out.println("->[Worker :w].step(f2)");
+
         field.removeElement(this);
         nextField.acceptElement(this);
         nextField.stepOnIt(this);
-        System.out.println("<-");
+
     }
 
 }

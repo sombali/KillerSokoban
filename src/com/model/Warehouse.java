@@ -1,9 +1,7 @@
 package com.model;
 
 
-
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -112,7 +110,24 @@ public class Warehouse {
             row++;
             }
 
+        boolean b=false;
+        if(sw.size()<tr.size()){
+            for (int i = 0; i <sw.size() ; i++) {
+                if(i==sw.size()-1){
+                    for (int j = 0; j <tr.size() ; j++) {
+                        sw.get(i);
+                        tr.get(i);
+                    }
+                }
+                else{
+                    sw.get(i).=;
+                    tr.get(i).=
+                }
 
+            }
+
+
+        }
 
 
 

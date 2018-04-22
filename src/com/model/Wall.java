@@ -13,9 +13,9 @@ public class Wall extends Blockage {
      * @return mindig false-al tér vissza, mert Blockage elem nem mozgatható
      */
     @Override
-    public boolean hit(Player player, Direction direction) {
-        System.out.println("-->[Wall :w].hit(worker, direction)");
-        System.out.println("<--false == Nem tudsz ide Lepni");
+    public boolean hit(Player player, Direction direction,int s) {
+        //System.out.println("-->[Wall :w].hit(worker, direction)");
+       // System.out.println("<--false == Nem tudsz ide Lepni");
         return false;
     }
 
@@ -26,9 +26,9 @@ public class Wall extends Blockage {
      * @return mindig false-al tér vissza, mert Blockage elem nem mozgatható
      */
     @Override
-    public boolean hit(Pushable pushable, Direction direction) {
-        System.out.println("-->[Wall :w].hit(box, direction)");
-        System.out.println("<--false == Nem tudsz ide Lepni");
+    public boolean hit(Pushable pushable, Direction direction,int s) {
+      //  System.out.println("-->[Wall :w].hit(box, direction)");
+       // System.out.println("<--false == Nem tudsz ide Lepni");
         return false;
     }
 }

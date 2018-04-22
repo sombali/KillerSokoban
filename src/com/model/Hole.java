@@ -17,7 +17,7 @@ public class Hole extends Field{
     }
 
     /**
-     * Eltávolítja magáról a játékost
+     * Eltávolítja magáról a játékostss
      * @param player 
      */
     @Override

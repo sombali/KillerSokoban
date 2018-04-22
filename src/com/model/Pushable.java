@@ -21,36 +21,42 @@ public abstract class Pushable extends Element {
      * @param direction a játékos haladási iránya
      * @return lépés sikeressége
      */
-    public boolean hit(Player player, Direction direction) {
-        System.out.println("-->[Box :b].hit(worker, direction)");
+    public boolean hit(Player player, Direction direction,int s) {
 
-        //
         Field nextField = getField().getNeighbors(direction);
         Element element1 = nextField.getElement();
+        //Itt alltijuk be az erot.
 
-        nextField.setElement(element1);
-        if(element1 != null) {
-            element1.setTestField(nextField);
-        }
+        int remainingForce;
+        if (field.getTools() != null) {
+            int tool = field.getTools().getChangeFriction();
+            remainingForce = s - (weight + tool);
+        } else
+            remainingForce = s - weight;
 
         /*
          * Ha nem üres a szomszéd mező, megnézi, hogy az az elem tovább tud tolódni,
          * ha sikerült, a tolható elem is továbblép és jelzi, hogy sikerült lépnie.
          * Ha üres a szomszéd mező, továbblép, és jelzi a lépés sikerességét
          */
+
         boolean allowed = true;
-        if(element1 != null) {
-            allowed = element1.hit(this, direction);
-            if(allowed) {
+        if(remainingForce>=0) {
+            if (element1 != null) {
+                allowed = element1.hit(this, direction, remainingForce);
+                if (allowed) {
+                    step(nextField);
+                }
+            } else {
                 step(nextField);
+
+                return true;
             }
-        } else {
-            step(nextField);
-            System.out.println("<--- true");
-            return true;
+
+            return allowed;
         }
-        System.out.println("<---" + " " + allowed);
-        return allowed;
+        else
+            return false;
     }
 
     /**
@@ -59,36 +65,37 @@ public abstract class Pushable extends Element {
      * @param direction az elem továbbhaladási iránya
      * @return lépés sikeressége
      */
-    public boolean hit(Pushable pushable, Direction direction) {
-        System.out.println("-->[Box :b].hit(box, direction)");
-
+    public boolean hit(Pushable pushable, Direction direction,int s) {
         Field nextField = getField().getNeighbors(direction);
-        Element element1 = nextField.getElement();
-
-        nextField.setElement(element1);
-
-        if(element1 != null) {
-            element1.setTestField(nextField);
-        }
-
+        Element nextElement1 = nextField.getElement();
+        int remainingForce;
+        if (field.getTools() != null) {
+            int tool = field.getTools().getChangeFriction();
+            remainingForce = s - (weight + tool);
+        } else
+            remainingForce = s - weight;
         /*
          * Ha nem üres a szomszéd mező, megnézi, hogy az az elem tovább tud tolódni,
          * ha sikerült, a tolható elem is továbblép és jelzi, hogy sikerült lépnie.
          * Ha üres a szomszéd mező, továbblép, és jelzi a lépés sikerességét
          */
         boolean allowed = true;
-        if(element1 != null) {
-            allowed = element1.hit(this, direction);
-            if(allowed) {
+
+        if (remainingForce >= 0) {
+            if (nextElement1 != null) {
+                allowed = nextElement1.hit(this, direction,remainingForce);
+                if (allowed) {
+                    step(nextField);
+                }
+            } else {
                 step(nextField);
+                return true;
             }
-        } else {
-            step(nextField);
-            System.out.println("<---" + " " + true);
-            return true;
+
+            return allowed;
         }
-        System.out.println("<---" + " " + allowed);
-        return allowed;
+        else
+            return false;
     }
 
     /**

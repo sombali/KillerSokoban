@@ -24,7 +24,6 @@ public class Element {
      * 
      */
     public void setField(Field field) {
-        System.out.println("-->.setField(f2) = Sikeres lepes");
         this.field = field;
     }
 
@@ -32,9 +31,7 @@ public class Element {
      * A metódus az adott Element jelenlegi mezőjét hivatott beállítani.
      * @param field Egy mező objektum
      */
-    public void setTestField(Field field){
-        this.field = field;
-    }
+
 
     /**
      *
@@ -42,7 +39,7 @@ public class Element {
      * @param direction Egy adott irány.
      * @return true-val tér vissza ha a lépés sikeres volt, false-szal ha nem
      */
-    public boolean hit(Element element, Direction direction) {
+    public boolean hit(Element element, Direction direction , int s) {
         return true;
     }
 
@@ -52,7 +49,7 @@ public class Element {
      * @param direction Egy adott irány.
      * @return true-val tér vissza ha a lépés sikeres volt, false-szal ha nem
      */
-    public boolean hit(Player player,Direction direction){
+    public boolean hit(Player player,Direction direction ,int s){
         return true;
     }
 
@@ -62,7 +59,7 @@ public class Element {
      * @param direction Egy adott irány.
      * @return true-val tér vissza ha a lépés sikeres volt, false-szal ha nem
      */
-    public boolean hit(Pushable pushable,Direction direction){
+    public boolean hit(Pushable pushable,Direction direction ,int s){
         return true;
     }
 

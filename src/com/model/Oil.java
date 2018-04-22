@@ -4,9 +4,9 @@ public class Oil extends Tools {
     /**
      * A megvaltoztatott surlodas.
      */
-    private int changeFriction;
+    private int changeFriction=-2;
 
-    public int getChangeFriction() {
+    public  int getChangeFriction() {
         return changeFriction;
     }
 

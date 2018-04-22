@@ -5,7 +5,7 @@ public class Honey extends Tools {
     /**
      * A megvaltoztatott surlodas.
      */
-    private int changeFriction;
+    private int changeFriction=6;
 
     public int getChangeFriction() {
         return changeFriction;
@@ -14,4 +14,5 @@ public class Honey extends Tools {
     public void setChangeFriction(int changeFriction) {
         this.changeFriction = changeFriction;
     }
+
 }
