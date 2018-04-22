@@ -85,4 +85,10 @@ public class TrapDoor extends Hole {
             state = TrapDoorState.CLOSED;
         }
     }
+    public void setaSwitch(Switch s){
+        aSwitch=s;
+    }
+    public  Switch getaSwitch(){
+        return aSwitch;
+    }
 }

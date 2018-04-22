@@ -48,6 +48,8 @@ public class Warehouse {
         String line;
         int sizeRow=0;
         int sizeColumn=0;
+       createPlayer(new Worker());
+       createPlayer(new Worker());
         while((line=br.readLine())!=null){
             String[]a=line.split(" ");
             sizeColumn=a.length;
@@ -119,14 +121,14 @@ public class Warehouse {
         if(sw.size()<tr.size()){
             for (int i = 0; i <sw.size() ; i++) {
                 if(i==sw.size()-1){
-                    for (int j = 0; j <tr.size() ; j++) {
-                        sw.get(i).;
-                        tr.get(i);
+                    for (int j = i; j <tr.size() ; j++) {
+                        sw.get(i).setTrapDoor(tr.get(j));
+
                     }
                 }
                 else{
-                    sw.get(i);
-                    tr.get(i);
+                    sw.get(i).setTrapDoor(tr.get(i));
+
                 }
 
             }
@@ -190,6 +192,7 @@ public class Warehouse {
                 createPlayer(player1);
                 f=field2;
                 addField(field2);
+                playerList.set(0,player1);
                 break;
 
             case "2":
@@ -202,6 +205,7 @@ public class Warehouse {
                 createPlayer(player2);
                 f=field3;
                 addField(field3);
+                playerList.set(1,player2);
                 break;
             case "%":
                 Field field4 = new Field();
@@ -248,6 +252,7 @@ public class Warehouse {
                 TargetField target_1 = new TargetField();
                 targetFields.add(target_1);
                 f=target_1;
+                target_1.setPlayer(playerList.get(0));
                 addField(target_1);
                 break;
 
@@ -255,6 +260,7 @@ public class Warehouse {
                 TargetField target_2 = new TargetField();
                 targetFields.add(target_2);
                 f=target_2;
+                target_2.setPlayer(playerList.get(1));
                 addField(target_2);
                 break;
 
@@ -264,11 +270,7 @@ public class Warehouse {
                 tr.add(trap);
                 addField(trap);
                 break;
-            case "F":
-                TargetField tar = new TargetField();
-                f=tar;
-                addField(tar);
-                break;
+
         }
         return f;
     }
