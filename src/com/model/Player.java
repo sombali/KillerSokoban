@@ -155,7 +155,7 @@ public abstract class Player extends Element{
      * mikor élni kíván vele egy játékos ez a metódus hívódik meg.
      */
     public void surrender() {
-        ArrayList<Player> players = getField().getWarehouse().getPlayerList();
+        ArrayList<Worker> players = getField().getWarehouse().getPlayerList();
         if(this.equals(players.get(0))) {
             players.get(1).win();
         } else {

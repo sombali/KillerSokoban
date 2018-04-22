@@ -27,7 +27,10 @@ public class Main {
         String command;
         Player player1 = null;
         Player player2 = null;
-        while (!(command = br.readLine()).trim().equals("")) {
+        while ((command = br.readLine())!=null) {
+
+           if(command.isEmpty())
+               break;
             stringList.add(command);
         }
 
@@ -44,9 +47,9 @@ public class Main {
                 if(splittedString[0].equals("loadmap")) {
                     //TODO
                    // game.warehouse.initialize(splittedString[1]);
-                    game.startGame(splittedString[1]);// feltölti a pályát, beállítja a szomszédokat. A splittedString[1] a pályát tartalmazó txt lesz igaz?
-                    player1 = game.getWarehouse().getPlayerList().get(0);
-                    player2 = game.getWarehouse().getPlayerList().get(1);
+                    game.startGame(splittedString[0]);// feltölti a pályát, beállítja a szomszédokat. A splittedString[1] a pályát tartalmazó txt lesz igaz?
+                  //  player1 = game.getWarehouse().getPlayerList().get(0);
+                   // player2 = game.getWarehouse().getPlayerList().get(1);
 
 
                 } else if(splittedString[0].equals("stepplayer")) {
@@ -92,7 +95,7 @@ public class Main {
                         }
                     }
                 } else if(splittedString[0].equals("listplayers")) {
-                    List<Player> players = game.getWarehouse().getPlayerList();
+                    List<Worker> players = game.getWarehouse().getPlayerList();
                     for(int j = 0; j < players.size(); j++) {
                         System.out.println(players.get(j).getName() + " " + "ALIVE EZT NEM TUDOM" +
                          " " + players.get(j).getPoint() + " " + players.get(j).getHoneyList().size() + " " +

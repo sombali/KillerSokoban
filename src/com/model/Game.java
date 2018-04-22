@@ -28,9 +28,9 @@ public class Game
      * Befejezi a játékot
      */
     public void endGame() {
-        ArrayList<Player> players = warehouse.getPlayerList();
-        Player player1 = players.get(0);
-        Player player2 = players.get(1);
+        ArrayList<Worker> players = warehouse.getPlayerList();
+        Worker player1 = players.get(0);
+        Worker player2 = players.get(1);
         if(player1.getPoint() == player2.getPoint()) {
             //TODO
         } else if(player1.getPoint() > player2.getPoint()) {

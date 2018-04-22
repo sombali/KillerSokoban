@@ -22,6 +22,8 @@ public class Warehouse {
      * A pályán található mezőket tárolja(Field,Switch,TrapDoor,Wall vagy Hole)
      */
     private List<Field> fields;
+    Worker player_1=null ;
+    Worker player_2=null ;
 
 
     public List<Switch> sw=new ArrayList<>();
@@ -30,7 +32,7 @@ public class Warehouse {
     /**
      * A játékosokat tároló lista.
      */
-    private ArrayList<Player> playerList;
+    private ArrayList<Worker> playerList;
 
     /**
      * A célmezőket tartalmazó lista
@@ -43,13 +45,12 @@ public class Warehouse {
     public void initialize(String file) throws IOException {
 
         int row=0;
-        FileReader fr = new FileReader(file); // itt persze majd azt a mapot olvassa be amit éppen akar(3közül valamelyik. MEGOLDVA
+        FileReader fr = new FileReader("TestMap2.txt"); // itt persze majd azt a mapot olvassa be amit éppen akar(3közül valamelyik. MEGOLDVA
         BufferedReader br=new BufferedReader(fr);;
         String line;
         int sizeRow=0;
         int sizeColumn=0;
-       createPlayer(new Worker());
-       createPlayer(new Worker());
+
         while((line=br.readLine())!=null){
             String[]a=line.split(" ");
             sizeColumn=a.length;
@@ -184,12 +185,12 @@ public class Warehouse {
 
             case "1":
                 Field field2 = new Field();
-                Worker player1 = new Worker();
+                Worker player1 =player_1;
 
                 //vegso megoldasnal majd adhatunk custom nevet is akar
                 player1.setName("player1");
                 field2.setElement(player1);
-                createPlayer(player1);
+
                 f=field2;
                 addField(field2);
                 playerList.set(0,player1);
@@ -197,12 +198,12 @@ public class Warehouse {
 
             case "2":
                 Field field3 = new Field();
-                Worker player2 = new Worker();
+                Worker player2 = player_2;
 
                 //vegso megoldasnal majd adhatunk custom nevet is akar
                 player2.setName("player2");
                 field3.setElement(player2);
-                createPlayer(player2);
+
                 f=field3;
                 addField(field3);
                 playerList.set(1,player2);
@@ -323,7 +324,7 @@ public class Warehouse {
      * Megadja a játékosok listáját
      * @return játékosokat tartalmazó lista
      */
-    public ArrayList<Player> getPlayerList() {
+    public ArrayList<Worker> getPlayerList() {
         return playerList;
     }
 }
