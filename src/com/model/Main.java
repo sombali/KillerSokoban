@@ -117,7 +117,9 @@ public class Main {
         } else {
             System.out.println("Invalid parancs, írd be újból");
         }
+
         }
 
     }
+
 }

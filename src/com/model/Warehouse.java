@@ -118,7 +118,6 @@ public class Warehouse {
             }
 
             row++;
-
             System.out.print("\n");
 
         }
@@ -214,8 +213,9 @@ public class Warehouse {
         }
 
 
-
+        br.close();
         }
+
 
     /**
      * Eldönti beolvasás során, hogy egy karakter milyen elemnek felel meg, azt inicializálja és beállítja a megfelelő tulajdonságokat.
