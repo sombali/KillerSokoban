@@ -33,7 +33,9 @@ public class Main {
                break;
            String[] splittedString = command.split(" ");
            if(splittedString[0].equals("loadmap")) {
-               game.startGame(splittedString[0]);
+               game.startGame(splittedString[1]);
+               player1 = game.getWarehouse().player_1;
+               player2 = game.getWarehouse().player_2;
            } else if(splittedString[0].equals("stepplayer")) {
             if(splittedString[1].equals("1")) {
                 if(splittedString[2].equals("1")) {

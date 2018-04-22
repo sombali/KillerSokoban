@@ -21,7 +21,7 @@ public class Warehouse {
     /**
      * A pályán található mezőket tárolja(Field,Switch,TrapDoor,Wall vagy Hole)
      */
-    private List<Field> fields;
+    private ArrayList<Field> fields = new ArrayList<Field>();
 
     /**
      * A két játékos
@@ -36,42 +36,56 @@ public class Warehouse {
     /**
      * A játékosokat tároló lista.
      */
-    private ArrayList<Worker> playerList;
+    private ArrayList<Worker> playerList = new ArrayList<>();
 
     /**
      * A célmezőket tartalmazó lista
      */
-    private ArrayList<TargetField> targetFields;
+    private ArrayList<TargetField> targetFields = new ArrayList<>();
 
     /**
-     * Létrehozza a pályán lévő mezőket, játékosokat, tulajdonképpen előkészíti a játék kezdetét.
+     * Beolvassa a pálya txt fájlt, majd inicializálja a pályát belőle
+     * @param file A beolvasandó pálya fájlának neve
+     * @throws IOException
      */
     public void initialize(String file) throws IOException {
 
         int row=0;
-        FileReader fr = new FileReader("TestMap2.txt"); // itt persze majd azt a mapot olvassa be amit éppen akar(3közül valamelyik. MEGOLDVA
+        FileReader fr = new FileReader(file); // itt persze majd azt a mapot olvassa be amit éppen akar(3közül valamelyik. MEGOLDVA
         BufferedReader br=new BufferedReader(fr);;
         String line;
         int sizeRow=0;
         int sizeColumn=0;
 
+        /**
+         * Első beolvasánál a pálya méretét inicializálja
+         */
         while((line=br.readLine())!=null){
             String[] a=line.split(" ");
             sizeColumn=a.length;
             sizeRow++;
         }
 
-        String [][]palya=new String[sizeRow][sizeColumn];
+        Field[][] map=new Field[sizeRow][sizeColumn];
         line="";
 
+        /**
+         * A következő beolvasásánál pedig feltölti a 2D-s mátrixot
+         */
+        br = new BufferedReader(new FileReader(file));
         while((line=br.readLine())!=null){
 
-            String[]a=line.split(" ");
+            String[] a = line.split(" ");
             for (int i = 0; i <a.length ; i++) {
-                palya[row][i]=a[i];
+                map[row][i]=melyik_elem(a[i]);
+                //System.out.print(a[i]);
             }
+
+            //System.out.print("\n");
+
+            /*
             for (int i = 1; i <a.length ; i++) {
-                Field f0=  melyik_elem(a[i]);
+                Field f0 =  melyik_elem(a[i]);
                 if(row==0) {
                     Field field1 = melyik_elem(palya[row][i - 1]);
 
@@ -119,13 +133,84 @@ public class Warehouse {
 
 
                 }
-            row++;
-            }
+            row++;*/
+        }
 
+        /**
+         * Beállítja a mezők szomszédjait, külön kezelve első és utolsó sor/oszlop szerint
+         */
+        for(int i = 0; i < sizeRow; i++) {
+            for (int j = 0; j < sizeColumn; j++) {
+                Field spawn = map[i][j];
+
+                //első sor
+                if(i == 0) {
+
+                    //első oszlop
+                    if(j == 0) {
+                        spawn.setNeighbors(Direction.THIRD, map[i][j + 1]);
+
+                        //utolsó oszlop
+                    } else if (j == sizeColumn - 1) {
+                        spawn.setNeighbors(Direction.FIRST, map[i][j - 1]);
+
+                        //közép
+                    } else {
+                        spawn.setNeighbors(Direction.FIRST, map[i][j - 1]);
+                        spawn.setNeighbors(Direction.THIRD, map[i][j + 1]);
+                    }
+
+                    spawn.setNeighbors(Direction.FOURTH, map[i+1][j]);
+
+                    //utolsó sor
+                } else if (i == sizeRow - 1) {
+
+                    //első oszlop
+                    if(j == 0) {
+                        spawn.setNeighbors(Direction.THIRD, map[i][j + 1]);
+
+                        //utolsó oszlop
+                    } else if (j == sizeColumn - 1) {
+                        spawn.setNeighbors(Direction.FIRST, map[i][j - 1]);
+
+                        //közép
+                    } else {
+                        spawn.setNeighbors(Direction.FIRST, map[i][j - 1]);
+                        spawn.setNeighbors(Direction.THIRD, map[i][j + 1]);
+                    }
+
+                    spawn.setNeighbors(Direction.SECOND, map[i-1][j]);
+
+                    //közép
+                } else {
+
+                    //első oszlop
+                    if(j == 0) {
+                        spawn.setNeighbors(Direction.THIRD, map[i][j + 1]);
+
+                        //utolsó oszlop
+                    } else if (j == sizeColumn - 1) {
+                        spawn.setNeighbors(Direction.FIRST, map[i][j - 1]);
+
+                        //közép
+                    } else {
+                        spawn.setNeighbors(Direction.FIRST, map[i][j - 1]);
+                        spawn.setNeighbors(Direction.THIRD, map[i][j + 1]);
+                    }
+
+                    spawn.setNeighbors(Direction.SECOND, map[i-1][j]);
+                    spawn.setNeighbors(Direction.FOURTH, map[i+1][j]);
+                }
+            }
+        }
+
+        /**
+         * A switch mezők összepűrosítása a trapdoor mezőkkel.
+         */
         boolean b=false;
         if(sw.size()<tr.size()){
             for (int i = 0; i <sw.size() ; i++) {
-                if(i==sw.size()-1){
+                if(i == sw.size() - 1){
                     for (int j = i; j <tr.size() ; j++) {
                         sw.get(i).setTrapDoor(tr.get(j));
 
@@ -154,7 +239,6 @@ public class Warehouse {
     public Field melyik_elem(String a) {
         Field f=new Field();
         switch (a) {
-
             case "#":
                 Field field1 = new Field();
                 Wall wall = new Wall();
@@ -174,10 +258,12 @@ public class Warehouse {
                 //vegso megoldasnal majd adhatunk custom nevet is akar
                 player_1.setName("player1");
                 field2.setElement(player_1);
+                playerList.add(player_1);
 
                 f=field2;
                 addField(field2);
-                playerList.set(0,player_1);
+
+                System.out.println("1");
                 break;
 
             case "2":
@@ -186,10 +272,10 @@ public class Warehouse {
                 //vegso megoldasnal majd adhatunk custom nevet is akar
                 player_2.setName("player2");
                 field3.setElement(player_2);
+                playerList.add(player_2);
 
                 f=field3;
                 addField(field3);
-                playerList.set(1,player_2);
                 break;
             case "%":
                 Field field4 = new Field();
@@ -202,7 +288,7 @@ public class Warehouse {
                 Hole hole = new Hole();
                 addField(hole);
                 f=hole;
-                break;
+                return hole;
             case "X":
                 Field field5 = new Field();
                 Box box = new Box();
@@ -213,10 +299,9 @@ public class Warehouse {
                 break;
             case "S":
                 Switch s = new Switch();
-                f=s;
+                f = s;
                 sw.add(s);
                 addField(s);
-
                 break;
             case "H":
                 Honey honey = new Honey();
