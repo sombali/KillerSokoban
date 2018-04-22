@@ -115,13 +115,13 @@ public class Warehouse {
             for (int i = 0; i <sw.size() ; i++) {
                 if(i==sw.size()-1){
                     for (int j = 0; j <tr.size() ; j++) {
-                        sw.get(i);
+                        sw.get(i).;
                         tr.get(i);
                     }
                 }
                 else{
-                    sw.get(i).=;
-                    tr.get(i).=
+                    sw.get(i);
+                    tr.get(i);
                 }
 
             }

@@ -38,6 +38,7 @@ public class TrapDoor extends Hole {
         System.out.println("-->[TrapDoor :td].removeElement(pushable)");
     }
     
+
     /**
      * Eltávolítja a rajta álló játékost
      * @param player mezőn álló játékos
