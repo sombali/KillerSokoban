@@ -91,4 +91,12 @@ public class TrapDoor extends Hole {
     public  Switch getaSwitch(){
         return aSwitch;
     }
+
+    public void getDescription() {
+        if(this.state.equals(TrapDoorState.CLOSED)) {
+            System.out.println("?");
+        } else {
+            System.out.println("!");
+        }
+    }
 }

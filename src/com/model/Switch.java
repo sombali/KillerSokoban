@@ -53,4 +53,8 @@ public class Switch extends Field {
         super.removeElement(pushable);
         trapDoor.switchState();
     }
+
+    public void getDescription() {
+        System.out.println("s");
+    }
 }

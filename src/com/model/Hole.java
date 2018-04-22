@@ -60,4 +60,8 @@ public class Hole extends Field{
         removeElement(player);
         player.die();
     }
+
+    public void getDescription() {
+        System.out.println("O");
+    }
 }

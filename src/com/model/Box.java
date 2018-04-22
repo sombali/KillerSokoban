@@ -28,5 +28,9 @@ public class Box extends Pushable{
     public boolean hit(Pushable pushable, Direction direction, int friction) {
         return super.hit(pushable, direction, friction);
     }
+
+    public void getDescription() {
+        System.out.println("x");
+    }
 }
 

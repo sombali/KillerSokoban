@@ -61,4 +61,8 @@ public class Element {
         return true;
     }
 
+    public void getDescription() {
+
+    }
+
 }

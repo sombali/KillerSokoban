@@ -44,4 +44,12 @@ public class TargetField extends Field {
         super.removeElement(pushable);
         player.addPoints(-10);
     }
+
+    public void getDescription() {
+        if(getPlayer().getName().equals("1")) {
+            System.out.println("T");
+        } else {
+            System.out.println("F");
+        }
+    }
 }
