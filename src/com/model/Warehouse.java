@@ -16,7 +16,7 @@ public class Warehouse {
     /**
      * A játékban szereplő, még tolható ládák száma.
      */
-    private int pushableBoxes = 10;
+    private int pushableBoxes = 0;
 
     /**
      * A pályán található mezőket tárolja(Field,Switch,TrapDoor,Wall vagy Hole)
@@ -30,7 +30,12 @@ public class Warehouse {
     /**
      * A játékosokat tároló lista.
      */
-    private List<Player> playerList;
+    private ArrayList<Player> playerList;
+
+    /**
+     * A célmezőket tartalmazó lista
+     */
+    private ArrayList<TargetField> targetFields;
 
     /**
      * Létrehozza a pályán lévő mezőket, játékosokat, tulajdonképpen előkészíti a játék kezdetét.
@@ -152,7 +157,12 @@ public class Warehouse {
         playerList.get(0).setField(playerField);*/
 
 
-
+    /**
+     * Eldönti beolvasás során, hogy egy karakter milyen elemnek felel meg, azt inicializálja és beállítja a megfelelő tulajdonságokat.
+     * A karakterekhez tartozó elemek és mezők listája a dokumentációban megtalálható
+     * @param a átvett karakter
+     * @return
+     */
     public Field melyik_elem(String a) {
         Field f=new Field();
         switch (a) {
@@ -170,10 +180,12 @@ public class Warehouse {
                 addField(field);
                 break;
 
-
             case "1":
                 Field field2 = new Field();
                 Worker player1 = new Worker();
+
+                //vegso megoldasnal majd adhatunk custom nevet is akar
+                player1.setName("player1");
                 field2.setElement(player1);
                 createPlayer(player1);
                 f=field2;
@@ -183,6 +195,9 @@ public class Warehouse {
             case "2":
                 Field field3 = new Field();
                 Worker player2 = new Worker();
+
+                //vegso megoldasnal majd adhatunk custom nevet is akar
+                player2.setName("player2");
                 field3.setElement(player2);
                 createPlayer(player2);
                 f=field3;
@@ -203,6 +218,7 @@ public class Warehouse {
             case "X":
                 Field field5 = new Field();
                 Box box = new Box();
+                setPushableBoxes(1);
                 field5.setElement(box);
                 f=field5;
                 addField(field5);
@@ -229,10 +245,19 @@ public class Warehouse {
                 f=field7;
                 break;
             case "T":
-                TargetField target = new TargetField();
-                f=target;
-                addField(target);
+                TargetField target_1 = new TargetField();
+                targetFields.add(target_1);
+                f=target_1;
+                addField(target_1);
                 break;
+
+            case "F":
+                TargetField target_2 = new TargetField();
+                targetFields.add(target_2);
+                f=target_2;
+                addField(target_2);
+                break;
+
             case "!":
                 TrapDoor trap = new TrapDoor();
                 f=trap;
@@ -259,6 +284,10 @@ public class Warehouse {
         this.fields.add(field);
     }
 
+    /**
+     * A meg tolhato objektumok számának lekérdezése
+     * @return A megmaradt tolható objektumok
+     */
     public int getPushableBoxes() {
         return pushableBoxes;
     }
@@ -266,7 +295,7 @@ public class Warehouse {
     /**
      * A metódus létrehoz egy új Workert, akit egyből hozzá is ad a játékosokat tartalmazó listához.
      */
-    public void createPlayer(Worker worker) // kis javítás, paraméterül kapja meg
+    public void createPlayer(Worker worker)
     {
         playerList.add(worker);
     }
@@ -284,16 +313,15 @@ public class Warehouse {
      *           
      */
     public void setPushableBoxes(int num) {
-        System.out.println("-->[Warehouse].setPushableBoxes(num)");
-        pushableBoxes -= num;
-        System.out.println("<--");
+        pushableBoxes += num;
+        if(pushableBoxes == 0);
     }
 
     /**
      * Megadja a játékosok listáját
      * @return játékosokat tartalmazó lista
      */
-    public List<Player> getPlayerList() {
+    public ArrayList<Player> getPlayerList() {
         return playerList;
     }
 }

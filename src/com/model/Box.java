@@ -9,22 +9,24 @@ public class Box extends Pushable{
      * Játékos szeretné tolni tovább a ládát
      * @param player játékos, ami a tolható elem helyére szeretne lépni
      * @param direction a játékos haladási iránya
+     * @param friction Az objektumok együttes surlódása
      * @return true-val tér vissza ha a lépés sikeres volt, false-szal ha nem
      */
     @Override
-    public boolean hit(Player player, Direction direction,int s) {
-        return super.hit(player, direction,s);
+    public boolean hit(Player player, Direction direction, int friction) {
+        return super.hit(player, direction, friction);
     }
 
     /**
      * Egy tolható objektum tolja tovább a ládát
      * @param pushable az új elem, ami a jelenlegi tolható elem helyére szeretne lépni
      * @param direction az elem továbbhaladási iránya
+     * @param friction Az objektumok együttes surlódása
      * @return true-val tér vissza ha a lépés sikeres volt, false-szal ha nem
      */
     @Override
-    public boolean hit(Pushable pushable, Direction direction,int s) {
-        return super.hit(pushable, direction,s);
+    public boolean hit(Pushable pushable, Direction direction, int friction) {
+        return super.hit(pushable, direction, friction);
     }
 }
 

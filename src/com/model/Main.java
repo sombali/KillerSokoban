@@ -20,25 +20,6 @@ public class Main {
 
         Game game = new Game();
 
-
-        //Egyszeru menu
-        //Scanner in = new Scanner(System.in); //Csak beolvas
-        /*
-        System.out.println("Jatek Lepeget - Irj 1-et, majd nyomj egy Entert");
-        System.out.println("Jatek Feladasa - Irj 2-ot, majd nyomj egy Entert");
-        System.out.println("Jatek Megnyerese - Irj 3-at, majd nyomj egy Entert");
-        int x = in.nextInt();
-        Player testPlayer = game.getWarehouse().getPlayerList().get(0);
-        if(x==1) {
-            //testPlayer.move(Direction.FIRST);
-            testPlayer.move(Direction.FIRST);
-        } else if(x == 2) {
-            testPlayer.surrender();
-        } else if(x == 3) {
-            testPlayer.win();
-        }*/
-
-
         InputStreamReader isr = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(isr);
 

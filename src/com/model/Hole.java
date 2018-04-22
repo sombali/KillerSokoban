@@ -12,7 +12,6 @@ public class Hole extends Field{
      */
     @Override
     public Element getElement(){
-
         return null;
     }
 
@@ -21,9 +20,8 @@ public class Hole extends Field{
      * @param player 
      */
     @Override
-    public void removeElement(Player player)
-    {
-        System.out.println("-->[Hole: h].removeElement(worker)");
+    public void removeElement(Player player) {
+        setElement(null);
     }
 
     /**
@@ -31,9 +29,8 @@ public class Hole extends Field{
      * @param pushable tolható elem
      */
     @Override
-    public void removeElement(Pushable pushable)
-    {
-        System.out.println("-->[Hole: h].removeElement(box)");
+    public void removeElement(Pushable pushable) {
+        setElement(null);
     }
     /**
      * Egy elem lép a mezőre
@@ -50,11 +47,8 @@ public class Hole extends Field{
      */
     @Override
     public void stepOnIt(Pushable pushable) {
-        System.out.println("->[Hole: h].stepOnIt(box)");
-        System.out.println("Elpusztult a doboz!");
         removeElement(pushable);
-        new Warehouse().setPushableBoxes(-1);
-        System.out.println("<-");
+        getWarehouse().setPushableBoxes(-1);
     }
 
     /**
@@ -63,9 +57,7 @@ public class Hole extends Field{
      */
     @Override
     public void stepOnIt(Player player) {
-        System.out.println("->[Hole: h].stepOnIt(worker)");
         removeElement(player);
         player.die();
-        System.out.println("<-");
     }
 }

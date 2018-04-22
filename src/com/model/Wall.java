@@ -10,12 +10,11 @@ public class Wall extends Blockage {
      * Játékos szeretné tolni a továbbhaladás irányába a falat
      * @param player játékos, ami az fal mezőjére kíván lépni
      * @param direction a továbbhaladás iránya
+     * @param friction a surlodasi egyutthato
      * @return mindig false-al tér vissza, mert Blockage elem nem mozgatható
      */
     @Override
-    public boolean hit(Player player, Direction direction,int s) {
-        //System.out.println("-->[Wall :w].hit(worker, direction)");
-       // System.out.println("<--false == Nem tudsz ide Lepni");
+    public boolean hit(Player player, Direction direction, int friction) {
         return false;
     }
 
@@ -23,12 +22,11 @@ public class Wall extends Blockage {
      * Játékos szeretné tolni a továbbhaladás irányába a falat
      * @param pushable tolható objektum, ami az fal mezőjére kíván lépni
      * @param direction a továbbhaladás iránya
+     * @param friction a surlodasi egyutthato
      * @return mindig false-al tér vissza, mert Blockage elem nem mozgatható
      */
     @Override
-    public boolean hit(Pushable pushable, Direction direction,int s) {
-      //  System.out.println("-->[Wall :w].hit(box, direction)");
-       // System.out.println("<--false == Nem tudsz ide Lepni");
+    public boolean hit(Pushable pushable, Direction direction, int friction) {
         return false;
     }
 }
