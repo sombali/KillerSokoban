@@ -100,7 +100,7 @@ public class Main {
             Field[][] map = game.getWarehouse().getMap();
 
             for(int i = 0; i < wh.getSizeRow(); i++) {
-                for(int j = 0; i < wh.getSizeColumn(); j++) {
+                for(int j = 0; j < wh.getSizeColumn(); j++) {
                     Element element = map[i][j].getElement();
                     Tools tools = map[i][j].getTools();
                     if(element != null) {
@@ -111,6 +111,8 @@ public class Main {
                         map[i][j].getDescription();
                     }
                 }
+
+                System.out.print("\n");
             }
         } else {
             System.out.println("Invalid parancs, írd be újból");
