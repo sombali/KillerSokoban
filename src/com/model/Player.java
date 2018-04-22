@@ -64,7 +64,22 @@ public abstract class Player extends Element{
             oil.add(new Oil());
         }
     }
-
+    /**
+     * Ezzel rakjuk le a megfelelo mezore a Mezet
+     */
+    public void throwHoney(){
+        Tools h= getHoney();
+        field.setTools(h);
+        h.setField(this.field);
+    }
+    /**
+     * Ezzel rakjuk le a megfelelo mezore az Olajat
+     */
+    public void throwOil(){
+        Tools h=getOil();
+        field.setTools(h);
+        h.setField(this.field);
+    }
     /**
      * Visszaad egy mezet es torli a listabol.
      * @return mez
@@ -159,10 +174,10 @@ public abstract class Player extends Element{
      *
      * @param pushable Egy tolható objektum.
      * @param direction Egy adott irány.
-     * @param friction A tárgyak együtte surlódása
+     * @param s A tárgyak együtte surlódása
      * @return true-val tér vissza ha a lépés sikeres volt, false-szal ha nem.
      */
-    public boolean hit(Pushable pushable, Direction direction, int friction) {
+    public boolean hit(Pushable pushable, Direction direction, int s) {
         Field nextfield = getField().getNeighbors(direction);
         Element element = nextfield.getElement();
 
@@ -183,7 +198,7 @@ public abstract class Player extends Element{
      * @param direction Egy adott irány
      * @return false-al tér vissza
      */
-    public boolean hit(Player player, Direction direction, int friction) {
+    public boolean hit(Player player, Direction direction, int s) {
         return false;
     }
 
