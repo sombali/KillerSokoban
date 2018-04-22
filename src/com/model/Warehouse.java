@@ -231,12 +231,16 @@ public class Warehouse {
                 Wall wall = new Wall();
                 field1.setElement(wall);
                 f=field1;
+                field1.setWarehouse(this);
                 addField(field1);
+
                 break;
             case ".":
                 Field field=new Field();
                 f=field;
+                field.setWarehouse(this);
                 addField(field);
+
                 break;
 
             case "1":
@@ -249,7 +253,9 @@ public class Warehouse {
                 playerList.add(player_1);
 
                 f=field2;
+                field2.setWarehouse(this);
                 addField(field2);
+
                 break;
 
             case "2":
@@ -262,19 +268,25 @@ public class Warehouse {
                 playerList.add(player_2);
 
                 f=field3;
+                field3.setWarehouse(this);
                 addField(field3);
+
                 break;
             case "%":
                 Field field4 = new Field();
                 Column column = new Column();
                 field4.setElement(column);
                 f=field4;
+                field4.setWarehouse(this);
                 addField(field4);
+
                 break;
             case "O":
                 Hole hole = new Hole();
+                hole.setWarehouse(this);
                 addField(hole);
                 f = hole;
+
                 break;
             case "X":
                 Field field5 = new Field();
@@ -283,34 +295,44 @@ public class Warehouse {
                 box.setField(field5);
                 field5.setElement(box);
                 f=field5;
+                field5.setWarehouse(this);
                 addField(field5);
+
                 break;
             case "S":
                 Switch s = new Switch();
                 f = s;
                 sw.add(s);
+                s.setWarehouse(this);
                 addField(s);
+
                 break;
             case "H":
                 Honey honey = new Honey();
                 Field field6 = new Field();
                 field6.setTools(honey);
                 f=field6;
+                field6.setWarehouse(this);
                 addField(field6);
+
                 break;
             case "L":
                 Oil oil = new Oil();
                 Field field7 = new Field();
                 field7.setTools(oil);
+                field7.setWarehouse(this);
                 addField(field7);
                 f=field7;
+
                 break;
             case "T":
                 TargetField target_1 = new TargetField();
                 targetFields.add(target_1);
                 f=target_1;
                 target_1.setPlayer(player_1);
+                target_1.setWarehouse(this);
                 addField(target_1);
+
                 break;
 
             case "F":
@@ -318,19 +340,23 @@ public class Warehouse {
                 targetFields.add(target_2);
                 f=target_2;
                 target_2.setPlayer(player_2);
+                target_2.setWarehouse(this);
                 addField(target_2);
+
                 break;
 
             case "!":
                 TrapDoor trap = new TrapDoor();
                 f=trap;
                 tr.add(trap);
+                trap.setWarehouse(this);
                 addField(trap);
                 break;
             case "?":
                 TrapDoor closed = new TrapDoor();
                 f=closed;
                 tr.add(closed);
+                closed.setWarehouse(this);
                 addField(closed);
                 break;
         }

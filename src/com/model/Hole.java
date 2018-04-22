@@ -57,8 +57,9 @@ public class Hole extends Field{
      */
     @Override
     public void stepOnIt(Player player) {
+         player.die();
         removeElement(player);
-        player.die();
+
     }
 
     public void getDescription() {

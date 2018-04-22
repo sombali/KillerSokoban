@@ -65,7 +65,7 @@ public class Field {
      * @return mezőhöz tartozó pálya
      */
     public Warehouse getWarehouse() {
-        return warehouse;
+        return this.warehouse;
     }
 
     /**

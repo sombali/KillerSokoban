@@ -3,7 +3,7 @@ package com.model;
 /**
  * Ez a játékban szereplő csapóajtót reprezentáló osztály.
  */
-public class TrapDoor extends Hole {
+public class TrapDoor extends Field {
 
     /**
      * Switch A TrapDoorhoz tartozó, őt nyitó/záró kapcsoló(Switch).
@@ -58,7 +58,7 @@ public class TrapDoor extends Hole {
     public void stepOnIt(Pushable pushable) {
         if(state.equals(TrapDoorState.OPENED)) {
             removeElement(pushable);
-            getWarehouse().setPushableBoxes(-10);
+            getWarehouse().setPushableBoxes(-1);
         }
     }
 
