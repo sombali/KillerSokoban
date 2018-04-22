@@ -25,7 +25,8 @@ public class Main {
 
         List<String> stringList = new ArrayList<>();
         String command;
-
+        Player player1 = null;
+        Player player2 = null;
         while (!(command = br.readLine()).trim().equals("")) {
             stringList.add(command);
         }
@@ -35,8 +36,7 @@ public class Main {
 
         // ezt kicsit később kéne. a 66. sorban állítom be a pályát csak. azt azért mert át kell vennie paraméterként hogy melyik mapot allítsa és azt ott írtad meg.
         //Ezért át kéne oda rakni,mert így hibát dob a kövi sorokban
-        Player player1 = game.getWarehouse().getPlayerList().get(0);
-        Player player2 = game.getWarehouse().getPlayerList().get(1);
+
 
 
        for(int i = 0; i < stringList.size(); i++) {
@@ -45,7 +45,8 @@ public class Main {
                     //TODO
                    // game.warehouse.initialize(splittedString[1]);
                     game.startGame(splittedString[1]);// feltölti a pályát, beállítja a szomszédokat. A splittedString[1] a pályát tartalmazó txt lesz igaz?
-
+                    player1 = game.getWarehouse().getPlayerList().get(0);
+                    player2 = game.getWarehouse().getPlayerList().get(1);
 
 
                 } else if(splittedString[0].equals("stepplayer")) {

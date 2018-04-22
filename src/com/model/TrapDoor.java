@@ -25,6 +25,7 @@ public class TrapDoor extends Hole {
         setElement(null);
     }
     
+
     /**
      * Eltávolítja a rajta álló játékost
      * @param player mezőn álló játékos
@@ -83,5 +84,11 @@ public class TrapDoor extends Hole {
         } else {
             state = TrapDoorState.CLOSED;
         }
+    }
+    public void setaSwitch(Switch s){
+        aSwitch=s;
+    }
+    public  Switch getaSwitch(){
+        return aSwitch;
     }
 }
