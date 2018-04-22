@@ -30,6 +30,6 @@ public class Column extends Blockage {
     }
 
     public void getDescription() {
-        System.out.println("%");
+        System.out.print("%");
     }
 }

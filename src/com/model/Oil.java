@@ -14,7 +14,7 @@ public class Oil extends Tools {
 
 
     public void getDescription() {
-        System.out.println("L");
+        System.out.print("L");
     }
 
 

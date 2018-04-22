@@ -76,12 +76,9 @@ public abstract class Player extends Element{
      * Ezzel rakjuk le a megfelelo mezore az Olajat
      */
     public void throwOil(){
-        if(oil.size() > 0) {
-            Tools h=getOil();
-            field.setTools(h);
-            h.setField(this.field);
-        }
-
+        Tools h=getOil();
+        field.setTools(h);
+        h.setField(this.field);
     }
     /**
      * Visszaad egy mezet es torli a listabol.
@@ -91,7 +88,6 @@ public abstract class Player extends Element{
         Honey h = honey.get(0);
         honey.remove(0);
         return h;
-
     }
 
     /**
@@ -102,7 +98,6 @@ public abstract class Player extends Element{
         Oil o = oil.get(0);
         oil.remove(0);
         return o;
-
     }
 
     //mezek szamanak kiiratasahoz kell
@@ -159,8 +154,13 @@ public abstract class Player extends Element{
      * Minden játékos rendelkezik a feladás lehetőségével,
      * mikor élni kíván vele egy játékos ez a metódus hívódik meg.
      */
-    public void surrender(Player player) {
-        player.win();
+    public void surrender() {
+        ArrayList<Worker> players = getField().getWarehouse().getPlayerList();
+        if(this.equals(players.get(0))) {
+            players.get(1).win();
+        } else {
+            players.get(0).win();
+        }
     }
 
     /**
@@ -217,7 +217,7 @@ public abstract class Player extends Element{
     }
 
     public void getDescription() {
-        System.out.print(this.getName());
+
     }
 
 }

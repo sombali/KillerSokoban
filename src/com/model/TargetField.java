@@ -47,9 +47,9 @@ public class TargetField extends Field {
 
     public void getDescription() {
         if(getPlayer().getName().equals("1")) {
-            System.out.println("T");
+            System.out.print("T");
         } else {
-            System.out.println("F");
+            System.out.print("F");
         }
     }
 }

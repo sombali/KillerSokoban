@@ -27,8 +27,8 @@ public class Warehouse {
     /**
      * A két játékos
      */
-    Worker player_1= new Worker();
-    Worker player_2= new Worker();
+    Worker player_1 = new Worker();
+    Worker player_2 = new Worker();
 
     /**
      * A kapcsolókat tartalmazó lista
@@ -284,7 +284,7 @@ public class Warehouse {
                 Field field2 = new Field();
 
                 //vegso megoldasnal majd adhatunk custom nevet is akar
-                player_1.setName("player1");
+                player_1.setName("1");
                 player_1.setField(field2);
                 field2.setElement(player_1);
                 playerList.add(player_1);
@@ -297,7 +297,7 @@ public class Warehouse {
                 Field field3 = new Field();
 
                 //vegso megoldasnal majd adhatunk custom nevet is akar
-                player_2.setName("player2");
+                player_2.setName("2");
                 player_2.setField(field3);
                 field3.setElement(player_2);
                 playerList.add(player_2);
@@ -315,7 +315,7 @@ public class Warehouse {
             case "O":
                 Hole hole = new Hole();
                 addField(hole);
-                f=hole;
+                f = hole;
                 return hole;
             case "X":
                 Field field5 = new Field();
