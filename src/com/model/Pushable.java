@@ -48,7 +48,8 @@ public abstract class Pushable extends Element {
                 boolean allowed = true;
                 if (element1 != null) {
                     allowed = element1.hit(this, direction, remainingForce);
-                    if (allowed) step(nextField);
+                    if (allowed)
+                        step(nextField);
                 } else {
                     step(nextField);
                 }

@@ -69,7 +69,10 @@ public class TrapDoor extends Hole {
     @Override
     public Element getElement() {
         if(state.equals(TrapDoorState.CLOSED)) {
+            if(this.getElement()!= null)
             return this.getElement();
+            else
+                return null;
         } else {
             return null;
         }

@@ -22,7 +22,7 @@ public class Worker extends Player {
 
         boolean allow;
         if(nextElement != null) {
-            allow =  nextElement.hit(this, Direction.FIRST, getStrength());
+            allow =  nextElement.hit(this, direction, getStrength());
             if(allow==true){
                 step(nextfield);
             }
