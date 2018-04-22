@@ -50,30 +50,62 @@ public class Warehouse {
      */
     private ArrayList<TargetField> targetFields = new ArrayList<>();
 
+    /**
+     * A játék pályáját tároló 2D-s tömb
+     */
     private Field[][] map;
 
+    /**
+     * Lekérdezi a játék pályáját
+     * @return játék pályája
+     */
     public Field[][] getMap() {
         return map;
     }
 
+    /**
+     * segédváltozó a játék pályájának méretére
+     */
     private int sizeRow = 0;
 
+    /**
+     * segédváltozó a játék pályájának méretére
+     */
     private int sizeColumn=0;
 
+    /**
+     * Lekérdezi a pálya sorainak számát
+     * @return sorok száma
+     */
     public int getSizeRow() {
         return sizeRow;
     }
 
+    /**
+     * Lekérdezi a pálya oszlopainak számát
+     * @return oszlopok száma
+     */
     public int getSizeColumn() {
         return sizeColumn;
     }
 
+    /**
+     * A játékok kezelő változó
+     */
     public Game game;
 
+    /**
+     *
+     * @return
+     */
     public Game getGame() {
         return game;
     }
 
+    /**
+     *
+     * @param game
+     */
     public void setGame(Game game) {
         this.game = game;
     }

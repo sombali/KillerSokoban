@@ -15,6 +15,19 @@ public abstract class Player extends Element{
     private String name;
 
     /**
+     * életben van-e a játékos vagy sem
+     */
+    private boolean alive = true;
+
+    /**
+     * Lekérdezi, hogy a játékos életben, azaz játékban van-e még
+     * @return
+     */
+    public boolean getAlive() {
+        return alive;
+    }
+
+    /**
      * A jatekos nevenek beallitasa
      * @param name a jatekos neve
      */
@@ -144,7 +157,8 @@ public abstract class Player extends Element{
      * Ha meghal a játékos(pl: lyukba lép) akkor hívódik meg.
      */
     public void die() {
-        getField().getWarehouse().removePlayer(this);
+        alive = false;
+        //getField().getWarehouse().removePlayer(this);
     }
 
     /**

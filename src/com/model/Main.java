@@ -82,7 +82,7 @@ public class Main {
         } else if(splittedString[0].equals("listplayers")) {
             List<Worker> players = game.getWarehouse().getPlayerList();
             for(int j = 0; j < players.size(); j++) {
-                System.out.println(players.get(j).getName() + " " + "ALIVE EZT NEM TUDOM" +
+                System.out.println(players.get(j).getName() + " " + players.get(j).getAlive() +
                         " " + players.get(j).getPoint() + " " + players.get(j).getHoneyList().size() + " " +
                         players.get(j).getOilList().size());
             } //TODO azert ir ki null-t mert nincs beallitva nev (szerintem)
