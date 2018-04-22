@@ -216,4 +216,8 @@ public abstract class Player extends Element{
         nextField.stepOnIt(this);
     }
 
+    public void getDescription() {
+        System.out.println(this.getName());
+    }
+
 }

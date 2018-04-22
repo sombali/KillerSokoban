@@ -13,4 +13,8 @@ public class Honey extends Tools {
         setChangeFriction(6);
     }
 
+    public void getDescription() {
+        System.out.println("h");
+    }
+
 }

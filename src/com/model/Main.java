@@ -96,6 +96,22 @@ public class Main {
             //TODO
         }else if (splittedString[0].equals("seeresult")){
             //TODO ide kell irni azt a cuccot ami kirajzolja az eredmeny palyat
+            Warehouse wh = game.getWarehouse();
+            Field[][] map = game.getWarehouse().getMap();
+
+            for(int i = 0; i < wh.getSizeRow(); i++) {
+                for(int j = 0; i < wh.getSizeColumn(); j++) {
+                    Element element = map[i][j].getElement();
+                    Tools tools = map[i][j].getTools();
+                    if(element != null) {
+                        element.getDescription();
+                    } else if(tools != null) {
+                        tools.getDescription();
+                    } else {
+                        map[i][j].getDescription();
+                    }
+                }
+            }
         } else {
             System.out.println("Invalid parancs, írd be újból");
         }

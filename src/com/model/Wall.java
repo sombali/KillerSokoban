@@ -29,4 +29,8 @@ public class Wall extends Blockage {
     public boolean hit(Pushable pushable, Direction direction, int s) {
         return false;
     }
+
+    public void getDescription() {
+        System.out.println("#");
+    }
 }

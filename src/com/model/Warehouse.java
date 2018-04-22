@@ -50,6 +50,24 @@ public class Warehouse {
      */
     private ArrayList<TargetField> targetFields = new ArrayList<>();
 
+    private Field[][] map;
+
+    public Field[][] getMap() {
+        return map;
+    }
+
+    private int sizeRow = 0;
+
+    private int sizeColumn=0;
+
+    public int getSizeRow() {
+        return sizeRow;
+    }
+
+    public int getSizeColumn() {
+        return sizeColumn;
+    }
+
     /**
      * Beolvassa a pálya txt fájlt, majd inicializálja a pályát belőle
      * @param file A beolvasandó pálya fájlának neve
@@ -63,8 +81,7 @@ public class Warehouse {
         System.out.println(f.getAbsolutePath());
         BufferedReader br=new BufferedReader(fr);;
         String line;
-        int sizeRow=0;
-        int sizeColumn=0;
+
 
         /**
          * Első beolvasánál a pálya méretét inicializálja
@@ -75,7 +92,7 @@ public class Warehouse {
             sizeRow++;
         }
 
-        Field[][] map=new Field[sizeRow][sizeColumn];
+        map=new Field[sizeRow][sizeColumn];
         line="";
 
         /**
