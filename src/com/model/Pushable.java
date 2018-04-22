@@ -112,5 +112,8 @@ public abstract class Pushable extends Element {
 
     public void stuck() {
 
+            
+
+
     }
 }
