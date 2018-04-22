@@ -22,6 +22,7 @@ public class Game
      */
     public void startGame(String map) throws IOException {
         warehouse.initialize(map);
+        warehouse.setGame(this);
     }
 
     /**
