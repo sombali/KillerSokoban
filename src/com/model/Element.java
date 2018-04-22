@@ -43,10 +43,10 @@ public class Element {
      *
      * @param player Egy Player objektum.
      * @param direction Egy adott irány.
-     * @param friction Az objektumok együttes surlódása
+     * @param s Az objektumok együttes surlódása
      * @return true-val tér vissza ha a lépés sikeres volt, false-szal ha nem
      */
-    public boolean hit(Player player,Direction direction, int friction){
+    public boolean hit(Player player,Direction direction, int s){
         return true;
     }
 
@@ -54,10 +54,10 @@ public class Element {
      *
      * @param pushable Egy Pushable objektum.
      * @param direction Egy adott irány.
-     * @param friction Az objektumok együttes surlódása
+     * @param s Az objektumok együttes surlódása
      * @return true-val tér vissza ha a lépés sikeres volt, false-szal ha nem
      */
-    public boolean hit(Pushable pushable,Direction direction, int friction){
+    public boolean hit(Pushable pushable,Direction direction, int s){
         return true;
     }
 

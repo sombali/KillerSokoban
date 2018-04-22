@@ -79,15 +79,15 @@ public class Main {
                 } else if(splittedString[0].equals("droptool")) {
                     if(splittedString[1].equals("1")) {
                         if(splittedString[2].equals("honey")) {
-                            player1.getHoney().drop(player1.getField());
+                            player1.throwHoney();
                         } else if(splittedString[2].equals("oil")) {
-                            player1.getOil().drop(player1.getField());
+                            player1.throwOil();
                         }
                     } else if(splittedString[1].equals("2")) {
                         if(splittedString[2].equals("honey")) {
-                            player2.getHoney().drop(player2.getField());
+                            player2.throwHoney();
                         } else if(splittedString[2].equals("oil")) {
-                            player2.getOil().drop(player2.getField());
+                            player2.throwOil();
                         }
                     }
                 } else if(splittedString[0].equals("listplayers")) {
