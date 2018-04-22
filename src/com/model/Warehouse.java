@@ -22,8 +22,12 @@ public class Warehouse {
      * A pályán található mezőket tárolja(Field,Switch,TrapDoor,Wall vagy Hole)
      */
     private List<Field> fields;
-    Worker player_1=null ;
-    Worker player_2=null ;
+
+    /**
+     * A két játékos
+     */
+    Worker player_1= new Worker();
+    Worker player_2= new Worker();
 
 
     public List<Switch> sw=new ArrayList<>();
@@ -52,7 +56,7 @@ public class Warehouse {
         int sizeColumn=0;
 
         while((line=br.readLine())!=null){
-            String[]a=line.split(" ");
+            String[] a=line.split(" ");
             sizeColumn=a.length;
             sizeRow++;
         }
@@ -141,25 +145,6 @@ public class Warehouse {
 
         }
 
-
-
-
-
-
-
-
-
-        /*System.out.println("Munkas beallitasa elso mezore: ");
-        this.fields = new ArrayList<>();
-        this.playerList = new ArrayList<>();
-        Field playerField = new Field();
-        createPlayer();
-        createPlayer();
-        playerField.setElement(playerList.get(0));
-        this.fields.add(playerField);
-        playerList.get(0).setField(playerField);*/
-
-
     /**
      * Eldönti beolvasás során, hogy egy karakter milyen elemnek felel meg, azt inicializálja és beállítja a megfelelő tulajdonságokat.
      * A karakterekhez tartozó elemek és mezők listája a dokumentációban megtalálható
@@ -185,28 +170,26 @@ public class Warehouse {
 
             case "1":
                 Field field2 = new Field();
-                Worker player1 =player_1;
 
                 //vegso megoldasnal majd adhatunk custom nevet is akar
-                player1.setName("player1");
-                field2.setElement(player1);
+                player_1.setName("player1");
+                field2.setElement(player_1);
 
                 f=field2;
                 addField(field2);
-                playerList.set(0,player1);
+                playerList.set(0,player_1);
                 break;
 
             case "2":
                 Field field3 = new Field();
-                Worker player2 = player_2;
 
                 //vegso megoldasnal majd adhatunk custom nevet is akar
-                player2.setName("player2");
-                field3.setElement(player2);
+                player_2.setName("player2");
+                field3.setElement(player_2);
 
                 f=field3;
                 addField(field3);
-                playerList.set(1,player2);
+                playerList.set(1,player_2);
                 break;
             case "%":
                 Field field4 = new Field();
@@ -253,7 +236,7 @@ public class Warehouse {
                 TargetField target_1 = new TargetField();
                 targetFields.add(target_1);
                 f=target_1;
-                target_1.setPlayer(playerList.get(0));
+                target_1.setPlayer(player_1);
                 addField(target_1);
                 break;
 
@@ -261,7 +244,7 @@ public class Warehouse {
                 TargetField target_2 = new TargetField();
                 targetFields.add(target_2);
                 f=target_2;
-                target_2.setPlayer(playerList.get(1));
+                target_2.setPlayer(player_2);
                 addField(target_2);
                 break;
 
