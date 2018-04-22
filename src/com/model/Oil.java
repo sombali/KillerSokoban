@@ -13,9 +13,6 @@ public class Oil extends Tools {
     }
 
 
-    public void drop(Field field) {
-
-    }
 
 
 }

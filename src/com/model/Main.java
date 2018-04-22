@@ -105,6 +105,8 @@ public class Main {
                     //TODO
                 } else if(splittedString[0].equals("listtargetfields")) {
                     //TODO
+                }else if (splittedString[0].equals("seeresult")){
+                    //TODO ide kell irni azt a cuccot ami kirajzolja az eredmeny palyat
                 }
         }
 

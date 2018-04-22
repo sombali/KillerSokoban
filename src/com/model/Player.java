@@ -64,7 +64,18 @@ public abstract class Player extends Element{
             oil.add(new Oil());
         }
     }
-
+    /**
+     * Ezzel rakjuk le a megfelelo mezore a Mezet
+     */
+    public void throwHoney(){
+        getHoney().setField(this.field);
+    }
+    /**
+     * Ezzel rakjuk le a megfelelo mezore az Olajat
+     */
+    public void throwOil(){
+        getOil().setField(this.field);
+    }
     /**
      * Visszaad egy mezet es torli a listabol.
      * @return mez
