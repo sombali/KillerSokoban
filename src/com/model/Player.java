@@ -1,5 +1,6 @@
 package com.model;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,24 +10,39 @@ import java.util.List;
 
 public abstract class Player extends Element{
     /**
-     * @param name A játékos nevét tárolja.
+     * A játékos nevét tárolja.
      */
     private String name;
 
     /**
+     * A jatekos nevenek beallitasa
+     * @param name a jatekos neve
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
      * @param point A játékos pontját tárolja.
      */
-    private int point;
+    private int point = 0;
 
     /**
      * A jatekos ereje.
      */
     private int strength;
 
+    /**
+     * Jatekos erejenek lekerdezese
+     * @return jatekos ereje
+     */
     public int getStrength() {
         return strength;
     }
 
+    /**
+     * Jatekos erejenek beallitasa
+     */
     public void setStrength(int strength) {
         this.strength = strength;
     }
@@ -42,6 +58,7 @@ public abstract class Player extends Element{
     private List<Oil> oil = new ArrayList<>();
 
     public Player() {
+        setStrength(12);
         for(int i = 0; i < 3; i++) {
             honey.add(new Honey());
             oil.add(new Oil());
@@ -67,10 +84,12 @@ public abstract class Player extends Element{
         oil.remove(0);
         return o;
     }
+
     //mezek szamanak kiiratasahoz kell
     public List<Honey> getHoneyList() {
         return honey;
     }
+
     //olajak szamanak kiiratasahoz kell
     public List<Oil> getOilList() {
         return oil;
@@ -82,13 +101,21 @@ public abstract class Player extends Element{
      *                  A játékos mozgását valósítja meg.
      */
     public void move(Direction direction) {
-
+        //...
     }
 
+    /**
+     * A jatekos pontjainak lekerdezese
+     * @return
+     */
     public int getPoint() {
         return point;
     }
 
+    /**
+     * Jatekos nevenek lekerdezese
+     * @return
+     */
     public String getName() {
         return name;
     }
@@ -97,10 +124,7 @@ public abstract class Player extends Element{
      * Ha meghal a játékos(pl: lyukba lép) akkor hívódik meg.
      */
     public void die() {
-    //TODO
-
-        //ezt vagy nullozni kene vagy pedig ismernie kene a warehouset es a removeplayert meghivni.
-
+        getField().getWarehouse().removePlayer(this);
     }
 
     /**
@@ -116,7 +140,12 @@ public abstract class Player extends Element{
      * mikor élni kíván vele egy játékos ez a metódus hívódik meg.
      */
     public void surrender() {
-        //TODO
+        ArrayList<Player> players = getField().getWarehouse().getPlayerList();
+        if(this.equals(players.get(0))) {
+            players.get(1).win();
+        } else {
+            players.get(0).win();
+        }
     }
 
     /**
@@ -126,17 +155,14 @@ public abstract class Player extends Element{
         //TODO
     }
 
-    //szekvencia alapjan kitoltottem @Bazsi
-    //az egy dolog de ki is kene iratni draga Bazsi @Szili
-
     /**
      *
      * @param pushable Egy tolható objektum.
      * @param direction Egy adott irány.
+     * @param friction A tárgyak együtte surlódása
      * @return true-val tér vissza ha a lépés sikeres volt, false-szal ha nem.
      */
-    public boolean hit(Pushable pushable, Direction direction,int s) {
-        //System.out.println("-->[Worker :w].hit(box, direction)");
+    public boolean hit(Pushable pushable, Direction direction, int friction) {
         Field nextfield = getField().getNeighbors(direction);
         Element element = nextfield.getElement();
 
@@ -146,7 +172,6 @@ public abstract class Player extends Element{
             return true;
         } else {
             step(nextfield);
-           // System.out.println("<-- true");
             return true;
         }
     }
@@ -158,7 +183,7 @@ public abstract class Player extends Element{
      * @param direction Egy adott irány
      * @return false-al tér vissza
      */
-    public  boolean hit(Player player, Direction direction,int s) {
+    public boolean hit(Player player, Direction direction, int friction) {
         return false;
     }
 
@@ -171,11 +196,9 @@ public abstract class Player extends Element{
      */
     //ideraktam a Workerbol a stepet, gondolvan hogy csak valositsa meg ezt @Bazsi (Zsir)
     public void step(Field nextField) {
-
         field.removeElement(this);
         nextField.acceptElement(this);
         nextField.stepOnIt(this);
-
     }
 
 }

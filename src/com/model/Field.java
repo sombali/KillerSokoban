@@ -2,6 +2,7 @@ package com.model;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 /**
  * A pályán lévő mezőket reprezentáló osztály
@@ -9,19 +10,6 @@ import java.util.Map;
  * A mező ismeri szomszédos mezőit négy irányban, a rajta álló elemet.
  */
 public class Field {
-
-    /**
-     * Ez a surlodasi tenyezo amit
-     */
-    private int friction=1;
-
-    public void setFriction(int s)
-    {
-        this.friction = s;
-    }
-    public int getFriction(){
-        return friction;
-    }
 
     /**
      * A mezőn álló elem
@@ -34,6 +22,25 @@ public class Field {
     Direction direction;
 
     /**
+     * A mezo surlodasa
+     */
+    private int friction;
+
+    /**
+     * A mezo surlodasanak lekerdezese
+     * @return a mezo surlodasi egyutthatoja
+     */
+    public int getFriction() {return friction;}
+
+    /**
+     * A mezo surlodasanak beallitasa
+     * @param friction a mezo surlodasa
+     */
+    public void setFriction(int friction) {
+        this.friction = friction;
+    }
+
+    /**
      * A szomszédos mezők, irány szerint tárolva
      */
     private Map<Direction, Field> fieldMap = new HashMap<>();
@@ -43,14 +50,21 @@ public class Field {
      */
     private Tools tools;
 
+    /**
+     * A mezőn lévő toolok lekérdezése
+     * @return a mezőn lévő toolok
+     */
     public Tools getTools() {
         return tools;
     }
 
+    /**
+     * A mezőn lévő toolok beállítása
+     * @param tools
+     */
     public void setTools(Tools tools) {
         this.tools = tools;
     }
-
 
     /**
      * A mezőt tartalmazó pálya
@@ -78,7 +92,7 @@ public class Field {
      * @return mezőn álló elem
      */
     public Element getElement() {
-       return this.element;
+        return element;
     }
 
     /**
@@ -90,7 +104,7 @@ public class Field {
     }
 
     public Field() {
-
+        setFriction(0);
     }
 
     /**
@@ -106,13 +120,17 @@ public class Field {
      * Eltávolítja magáról a rajta álló játékost
      * @param player a mezőn álló játékos
      */
-    public void removeElement(Player player) { }
+    public void removeElement(Player player) {
+        this.element = null;
+    }
 
     /**
      * Eltávolítja a rajta álló tolható elemet
      * @param pushable a mezőn álló tolható objektum
      */
-    public void removeElement(Pushable pushable) { }
+    public void removeElement(Pushable pushable) {
+        this.element = null;
+    }
 
 
     /**
@@ -130,7 +148,7 @@ public class Field {
      * @param field a szomszédos mező
      */
     public void setNeighbors(Direction direction, Field field) {
-        fieldMap.put(direction,field);
+        fieldMap.put(direction, field);
     }
 
     /**
@@ -138,7 +156,7 @@ public class Field {
      * @param element a mezőre lépett elem
      */
     public void stepOnIt(Element element) {
-
+        //TODO
     }
 
     /**
@@ -146,7 +164,7 @@ public class Field {
      * @param pushable a mezőre lépett tolható elem
      */
     public void stepOnIt(Pushable pushable) {
-
+        //TODO
     }
 
     /**
@@ -154,7 +172,7 @@ public class Field {
      * @param player a mezőre lépett játékos
      */
     public void stepOnIt(Player player) {
-
+        //TODO
     }
 
 
