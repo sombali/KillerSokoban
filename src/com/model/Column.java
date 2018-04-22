@@ -12,7 +12,7 @@ public class Column extends Blockage {
      * @return mindig false-al tér vissza, mert Blockage elem nem mozgatható
      */
     @Override
-    public boolean hit(Player player, Direction direction) {
+    public boolean hit(Player player, Direction direction,int s) {
         System.out.println("-->[Column :c].hit(worker, direction)");
         System.out.println("<--false == Nem tudsz ide Lepni");
         return false;
@@ -25,7 +25,7 @@ public class Column extends Blockage {
      * @return mindig false-al tér vissza, mert Blockage elem nem mozgatható
      */
     @Override
-    public boolean hit(Pushable pushable, Direction direction) {
+    public boolean hit(Pushable pushable, Direction direction,int s) {
         System.out.println("-->[Column :c].hit(box, direction)");
         System.out.println("<--false == Nem tudsz ide Lepni");
         return false;

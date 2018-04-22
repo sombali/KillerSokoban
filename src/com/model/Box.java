@@ -12,8 +12,8 @@ public class Box extends Pushable{
      * @return true-val tér vissza ha a lépés sikeres volt, false-szal ha nem
      */
     @Override
-    public boolean hit(Player player, Direction direction) {
-        return super.hit(player, direction);
+    public boolean hit(Player player, Direction direction,int s) {
+        return super.hit(player, direction,s);
     }
 
     /**
@@ -23,8 +23,8 @@ public class Box extends Pushable{
      * @return true-val tér vissza ha a lépés sikeres volt, false-szal ha nem
      */
     @Override
-    public boolean hit(Pushable pushable, Direction direction) {
-        return super.hit(pushable, direction);
+    public boolean hit(Pushable pushable, Direction direction,int s) {
+        return super.hit(pushable, direction,s);
     }
 }
 

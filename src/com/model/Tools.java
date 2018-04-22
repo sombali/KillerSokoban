@@ -1,6 +1,6 @@
 package com.model;
 
-public class Tools {
+public abstract class Tools {
     /**
      * A tool-t tartalmazo mezo.
      */
@@ -14,7 +14,7 @@ public class Tools {
         this.field = field;
     }
 
-    public void drop(Field field) {
+    public abstract int getChangeFriction();
 
-    }
+    public  void drop(Field field){} ; // ez csak grafikusnal fog kelleni szerintem
 }
