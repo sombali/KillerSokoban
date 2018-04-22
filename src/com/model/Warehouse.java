@@ -29,8 +29,14 @@ public class Warehouse {
     Worker player_1= new Worker();
     Worker player_2= new Worker();
 
-
+    /**
+     * A kapcsolókat tartalmazó lista
+     */
     public List<Switch> sw=new ArrayList<>();
+
+    /**
+     * A csapóajtókat tartalamzó lista
+     */
     public List<TrapDoor>tr=new ArrayList<>();
 
     /**
@@ -78,10 +84,10 @@ public class Warehouse {
             String[] a = line.split(" ");
             for (int i = 0; i <a.length ; i++) {
                 map[row][i]=melyik_elem(a[i]);
-                //System.out.print(a[i]);
+                System.out.print(a[i]);
             }
 
-            //System.out.print("\n");
+            System.out.print("\n");
 
             /*
             for (int i = 1; i <a.length ; i++) {
@@ -262,8 +268,6 @@ public class Warehouse {
 
                 f=field2;
                 addField(field2);
-
-                System.out.println("1");
                 break;
 
             case "2":
