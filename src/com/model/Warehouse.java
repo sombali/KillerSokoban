@@ -169,7 +169,7 @@ public class Warehouse {
         int row=0;
         File f = new File(file);
         FileReader fr = new FileReader(file); // itt persze majd azt a mapot olvassa be amit éppen akar(3közül valamelyik. MEGOLDVA
-        System.out.println(f.getAbsolutePath());
+        //System.out.println(f.getAbsolutePath());
         BufferedReader br=new BufferedReader(fr);;
         String line;
 
