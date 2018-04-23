@@ -45,6 +45,8 @@ public class TrapDoor extends Field {
         if(state.equals(TrapDoorState.OPENED)) {
             removeElement(player);
             player.die();
+        } else {
+            super.stepOnIt(player);
         }
     }
 
@@ -59,7 +61,9 @@ public class TrapDoor extends Field {
         if(state.equals(TrapDoorState.OPENED)) {
             removeElement(pushable);
             getWarehouse().setPushableBoxes(-1);
-        }
+        } else {
+            super.stepOnIt(pushable);
+    }
     }
 
     /**

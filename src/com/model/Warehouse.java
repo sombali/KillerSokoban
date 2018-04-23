@@ -111,6 +111,26 @@ public class Warehouse {
     }
 
     /**
+     * a játékban szerezhető maximlis pont
+     */
+    private int maxPoints = 0;
+
+    /**
+     * Lekérdezi a játékban szerezhető maximális pontot
+     * @return elérhető maximális pontszám
+     */
+    public int getMaxPoints() {
+        return maxPoints;
+    }
+
+    /**
+     * Beállítja a maximálisan szerezhető pontok számát
+     * @param points
+     */
+    public void setMaxPoints(int points) {
+        maxPoints += points;
+    }
+    /**
      * Beolvassa a pálya txt fájlt, majd inicializálja a pályát belőle
      * @param file A beolvasandó pálya fájlának neve
      * @throws IOException
@@ -360,6 +380,7 @@ public class Warehouse {
             case "T":
                 TargetField target_1 = new TargetField();
                 targetFields.add(target_1);
+                this.setMaxPoints(10);
                 f=target_1;
                 target_1.setPlayer(player_1);
                 target_1.setWarehouse(this);

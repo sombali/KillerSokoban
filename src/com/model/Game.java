@@ -33,7 +33,7 @@ public class Game
         Worker player1 = players.get(0);
         Worker player2 = players.get(1);
         if(player1.getPoint() == player2.getPoint()) {
-            //TODO
+            System.out.println("Tie!");
         } else if(player1.getPoint() > player2.getPoint()) {
             player1.win();
         } else {

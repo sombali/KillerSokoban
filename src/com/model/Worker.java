@@ -17,17 +17,22 @@ public class Worker extends Player {
 
         super.move(direction);
 
-        Field nextfield =  getField().getNeighbors(direction);
-        Element nextElement = nextfield.getElement();
+        if(this.isAlive()) {
 
-        boolean allow;
-        if(nextElement != null) {
-            allow =  nextElement.hit(this, direction, getStrength());
-            if(allow==true){
+
+            Field nextfield =  getField().getNeighbors(direction);
+            Element nextElement = nextfield.getElement();
+
+            boolean allow;
+            if(nextElement != null) {
+                allow =  nextElement.hit(this, direction, getStrength());
+                if(allow==true){
+                    step(nextfield);
+                }
+            } else {
                 step(nextfield);
             }
-        } else {
-            step(nextfield);
+
         }
 
 

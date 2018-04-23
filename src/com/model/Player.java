@@ -23,7 +23,7 @@ public abstract class Player extends Element{
      * Lekérdezi, hogy a játékos életben, azaz játékban van-e még
      * @return
      */
-    public boolean getAlive() {
+    public boolean isAlive() {
         return alive;
     }
 
@@ -158,7 +158,6 @@ public abstract class Player extends Element{
      */
     public void die() {
         alive = false;
-        //getField().getWarehouse().removePlayer(this);
     }
 
     /**
@@ -167,6 +166,7 @@ public abstract class Player extends Element{
      */
     public void addPoints(int point) {
         this.point += point;
+        if(this.point == getField().getWarehouse().getMaxPoints()) this.win();
     }
 
     /**
@@ -181,8 +181,9 @@ public abstract class Player extends Element{
      * A függvény meghívódik ha az egyik játékos nyert, tehát az összes saját területén láda áll.
      */
     public void win() {
-        //TODO
-    }
+        System.out.println("Player " + getName() + " win!" );
+        System.exit(0);
+}
 
     /**
      *

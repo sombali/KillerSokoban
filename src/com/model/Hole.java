@@ -49,6 +49,7 @@ public class Hole extends Field{
     public void stepOnIt(Pushable pushable) {
         removeElement(pushable);
         getWarehouse().setPushableBoxes(-1);
+
     }
 
     /**
@@ -57,7 +58,7 @@ public class Hole extends Field{
      */
     @Override
     public void stepOnIt(Player player) {
-         player.die();
+        player.die();
         removeElement(player);
 
     }
