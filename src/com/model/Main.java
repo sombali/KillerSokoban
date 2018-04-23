@@ -91,8 +91,6 @@ public class Main {
             //TODO
         } else if(splittedString[0].equals("load")) {
             //TODO
-        } else if(splittedString[0].equals("listtargetfields")) {
-            //TODO
         }else if (splittedString[0].equals("seeresult")){
             Warehouse wh = game.getWarehouse();
             Field[][] map = game.getWarehouse().getMap();

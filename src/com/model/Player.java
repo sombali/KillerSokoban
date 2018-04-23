@@ -70,6 +70,9 @@ public abstract class Player extends Element{
      */
     private List<Oil> oil = new ArrayList<>();
 
+    /**
+     * Játékos konstruktora, minden játékos 12 egységnyi erővel és 3-3 toolal rendelkezik.
+     */
     public Player() {
         setStrength(12);
         for(int i = 0; i < 3; i++) {

@@ -64,6 +64,9 @@ public class Hole extends Field{
 
     }
 
+    /**
+     * A kiírást segító függvény
+     */
     public void getDescription() {
         System.out.print("O");
     }

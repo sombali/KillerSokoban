@@ -51,21 +51,30 @@ public class Warehouse {
     private ArrayList<TargetField> targetFields = new ArrayList<>();
 
     /**
-     *
+     * A tolható objektumokat tartalmazó lista
      */
     private ArrayList<Pushable> pushables = new ArrayList<>();
 
     /**
-     *
+     * A tolható objektumokat kérdezi le
+     * @return még tolható objektumok listája
      */
     public ArrayList<Pushable> getPushables() {
         return pushables;
     }
 
+    /**
+     * A tolható objektumok listáját bővítő függvény
+     * @param pushable tolható objektum
+     */
     public void addPushable(Pushable pushable) {
         pushables.add(pushable);
     }
 
+    /**
+     * Törli az átadott tolható objektumot a listából
+     * @param pushable tolható objektum
+     */
     public void removePushable(Pushable pushable) {
         pushables.remove(pushable);
     }
@@ -263,7 +272,7 @@ public class Warehouse {
         }
 
         /**
-         * A switch mezők összepűrosítása a trapdoor mezőkkel.
+         * A switch mezők összepárosítása a trapdoor mezőkkel.
          */
         boolean b=false;
         if(sw.size()<=tr.size()){
@@ -293,7 +302,7 @@ public class Warehouse {
      * Eldönti beolvasás során, hogy egy karakter milyen elemnek felel meg, azt inicializálja és beállítja a megfelelő tulajdonságokat.
      * A karakterekhez tartozó elemek és mezők listája a dokumentációban megtalálható
      * @param a átvett karakter
-     * @return
+     * @return a létrehozott mező
      */
     public Field spawn_element(String a) {
         Field f=new Field();
@@ -305,8 +314,8 @@ public class Warehouse {
                 f=field1;
                 field1.setWarehouse(this);
                 addField(field1);
-
                 break;
+
             case ".":
                 Field field=new Field();
                 f=field;

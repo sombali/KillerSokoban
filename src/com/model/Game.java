@@ -26,7 +26,7 @@ public class Game
     }
 
     /**
-     * Befejezi a játékot
+     * Összehasonlítja a játékosok pontjait, és a legtöbb pontot gyűjtő játékos megnyeri a játékot
      */
     public void endGame() {
         ArrayList<Worker> players = warehouse.getPlayerList();
