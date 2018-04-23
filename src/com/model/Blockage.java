@@ -6,8 +6,19 @@ package com.model;
  */
 public abstract class
 Blockage extends Element{
-    private boolean stucked;
 
+    /**
+     *
+     */
+    private boolean stucked = true;
+
+    /**
+     *
+     */
+    @Override
+    public boolean isStucked() {
+        return stucked;
+    }
     /**
      * Játékos szeretné tolni a továbbhaladás irányába az akadályt
      * @param player játékos, ami az akadály mezőjére kíván lépni

@@ -11,6 +11,14 @@ public class Element {
     Field field;
 
     /**
+     *
+     */
+    private boolean stucked = false;
+
+    public boolean isStucked() {
+        return stucked;
+    }
+    /**
      * Megadja az elem mezőjét
      * @return Visszatér azzal a mezővel amin a játékos jelen pillanatban áll.
      */

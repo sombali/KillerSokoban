@@ -23,7 +23,6 @@ public class Main {
         InputStreamReader isr = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(isr);
 
-        List<String> stringList = new ArrayList<>();
         String command;
         Player player1 = null;
         Player player2 = null;
@@ -85,7 +84,7 @@ public class Main {
                 System.out.println(players.get(j).getName() + " " + players.get(j).isAlive() +
                         " " + players.get(j).getPoint() + " " + players.get(j).getHoneyList().size() + " " +
                         players.get(j).getOilList().size());
-            } //TODO azert ir ki null-t mert nincs beallitva nev (szerintem)
+            }
         } else if(splittedString[0].equals("printpushableboxes")) {
             System.out.println("Pushableboxes: " + game.getWarehouse().getPushableBoxes());
         } else if(splittedString[0].equals("save")) {
@@ -95,7 +94,6 @@ public class Main {
         } else if(splittedString[0].equals("listtargetfields")) {
             //TODO
         }else if (splittedString[0].equals("seeresult")){
-            //TODO ide kell irni azt a cuccot ami kirajzolja az eredmeny palyat
             Warehouse wh = game.getWarehouse();
             Field[][] map = game.getWarehouse().getMap();
 

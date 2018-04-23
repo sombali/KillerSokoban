@@ -51,6 +51,26 @@ public class Warehouse {
     private ArrayList<TargetField> targetFields = new ArrayList<>();
 
     /**
+     *
+     */
+    private ArrayList<Pushable> pushables = new ArrayList<>();
+
+    /**
+     *
+     */
+    public ArrayList<Pushable> getPushables() {
+        return pushables;
+    }
+
+    public void addPushable(Pushable pushable) {
+        pushables.add(pushable);
+    }
+
+    public void removePushable(Pushable pushable) {
+        pushables.remove(pushable);
+    }
+
+    /**
      * A játék pályáját tároló 2D-s tömb
      */
     private Field[][] map;
@@ -165,7 +185,7 @@ public class Warehouse {
 
             String[] a = line.split(" ");
             for (int i = 0; i < a.length; i++) {
-                map[row][i] = melyik_elem(a[i]);
+                map[row][i] = spawn_element(a[i]);
                 System.out.print(a[i]);
             }
 
@@ -275,7 +295,7 @@ public class Warehouse {
      * @param a átvett karakter
      * @return
      */
-    public Field melyik_elem(String a) {
+    public Field spawn_element(String a) {
         Field f=new Field();
         switch (a) {
             case "#":
@@ -349,8 +369,9 @@ public class Warehouse {
                 f=field5;
                 field5.setWarehouse(this);
                 addField(field5);
-
+                addPushable(box);
                 break;
+
             case "S":
                 Switch s = new Switch();
                 f = s;

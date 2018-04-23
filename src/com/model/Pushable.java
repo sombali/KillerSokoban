@@ -1,5 +1,7 @@
 package com.model;
 
+import java.util.ArrayList;
+
 /**
  * Tolható objektumot reprezentáló osztály
  */
@@ -10,6 +12,21 @@ public abstract class Pushable extends Element {
      */
     private boolean stucked;
 
+    /**
+     * Lekérdezi, hogy az objektum mozgatható-e
+     * @return
+     */
+    public boolean isStucked() {
+        return stucked;
+    }
+
+    /**
+     * Beállítja az objektum mozgatható tulajdonságát
+     * @param value
+     */
+    public void setStucked(boolean value) {
+        stucked = value;
+    }
     /**
      * A mozgathato objektum sulya.
      */
@@ -120,14 +137,57 @@ public abstract class Pushable extends Element {
     public void step(Field nextField) {
         getField().removeElement(this);
         nextField.acceptElement(this);
-        stuck();
+        ArrayList<Pushable> pushableArrayList = getField().getWarehouse().getPushables();
+        for(int i = 0; i < pushableArrayList.size(); i++) {
+            if(!(pushableArrayList.get(i).isStucked()))
+                pushableArrayList.get(i).stuck();
+        }
+        for(int i = pushableArrayList.size() - 1; i > 0; i--) {
+            if(!(pushableArrayList.get(i).isStucked()))
+                pushableArrayList.get(i).stuck();
+        }
         nextField.stepOnIt(this);
     }
 
 
+    /**
+     * A függvény ami ellenőrzi, hogy egy láda mozgatható állapotban van vagy sem. Ha két szomszédos mezője is stucked, azaz nem lehet mozgatni,
+     * akkor ő maga is ilyen állapotba kerül
+     */
     public void stuck() {
-
-
+        if(getField().getNeighbors(Direction.FIRST).getElement() != null && getField().getNeighbors(Direction.FIRST).getElement().isStucked()) {
+            if(getField().getNeighbors(Direction.SECOND).getElement() != null && getField().getNeighbors(Direction.SECOND).getElement().isStucked()) {
+                setStucked(true);
+                getField().getWarehouse().setPushableBoxes(-1);
+            } else if(getField().getNeighbors(Direction.FOURTH).getElement() != null && getField().getNeighbors(Direction.FOURTH).getElement().isStucked()) {
+                setStucked(true);
+                getField().getWarehouse().setPushableBoxes(-1);
+            }
+        } else if(getField().getNeighbors(Direction.SECOND).getElement() != null && getField().getNeighbors(Direction.SECOND).getElement().isStucked()) {
+            if(getField().getNeighbors(Direction.FIRST).getElement() != null && getField().getNeighbors(Direction.FIRST).getElement().isStucked()) {
+                setStucked(true);
+                getField().getWarehouse().setPushableBoxes(-1);
+            } else if(getField().getNeighbors(Direction.THIRD).getElement() != null && getField().getNeighbors(Direction.THIRD).getElement().isStucked()) {
+                setStucked(true);
+                getField().getWarehouse().setPushableBoxes(-1);
+            }
+        } else if(getField().getNeighbors(Direction.THIRD).getElement() != null && getField().getNeighbors(Direction.THIRD).getElement().isStucked()) {
+            if(getField().getNeighbors(Direction.SECOND).getElement() != null && getField().getNeighbors(Direction.SECOND).getElement().isStucked()) {
+                setStucked(true);
+                getField().getWarehouse().setPushableBoxes(-1);
+            } else if(getField().getNeighbors(Direction.FOURTH).getElement() != null && getField().getNeighbors(Direction.FOURTH).getElement().isStucked()) {
+                setStucked(true);
+                getField().getWarehouse().setPushableBoxes(-1);
+            }
+        } else if(getField().getNeighbors(Direction.FOURTH).getElement() != null && getField().getNeighbors(Direction.FOURTH).getElement().isStucked()) {
+            if(getField().getNeighbors(Direction.FIRST).getElement() != null && getField().getNeighbors(Direction.FIRST).getElement().isStucked()) {
+                setStucked(true);
+                getField().getWarehouse().setPushableBoxes(-1);
+            } else if(getField().getNeighbors(Direction.THIRD).getElement() != null && getField().getNeighbors(Direction.THIRD).getElement().isStucked()) {
+                setStucked(true);
+                getField().getWarehouse().setPushableBoxes(-1);
+            }
+        }
     }
 
     public void getDescription() {
