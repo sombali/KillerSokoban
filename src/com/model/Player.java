@@ -169,7 +169,9 @@ public abstract class Player extends Element{
      */
     public void addPoints(int point) {
         this.point += point;
-        if(this.point == getField().getWarehouse().getMaxPoints()) this.win();
+        if(this.point == getField().getWarehouse().getMaxPoints()) {
+            this.win();
+        }
     }
 
     /**
@@ -185,6 +187,7 @@ public abstract class Player extends Element{
      */
     public void win() {
         System.out.println("Player " + getName() + " win!" );
+        Main.winner(this.getName() + " jatekos nyert!");
         System.exit(0);
 }
 

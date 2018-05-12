@@ -16,11 +16,10 @@ public class Box extends Pushable{
     public boolean hit(Player player, Direction direction, int friction) {
         return super.hit(player, direction, friction);
     }
+
     public BoxView vw = new BoxView();
 
     public Drawable getView() {
-
-
         return vw;
 
     }

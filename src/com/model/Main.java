@@ -10,6 +10,8 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Alert;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -45,11 +47,15 @@ public class Main extends Application {
                     case RIGHT: game.warehouse.player_1.move(Direction.THIRD); break;
                     case DOWN: game.warehouse.player_1.move(Direction.FOURTH); break;
                     case LEFT: game.warehouse.player_1.move(Direction.FIRST); break;
+                    case L: game.warehouse.player_1.throwOil(); break;
+                    case K: game.warehouse.player_1.throwHoney(); break;
 
                     case W: game.warehouse.player_2.move(Direction.SECOND); break;
                     case A: game.warehouse.player_2.move(Direction.FIRST); break;
                     case S: game.warehouse.player_2.move(Direction.FOURTH); break;
                     case D: game.warehouse.player_2.move(Direction.THIRD); break;
+                    case Q: game.warehouse.player_2.throwHoney(); break;
+                    case E: game.warehouse.player_2.throwOil(); break;
                 }
                 Game.view.drawAll();
                 Warehouse wh = game.getWarehouse();
@@ -75,7 +81,8 @@ public class Main extends Application {
 
         stage.setScene(scene);
         // Set the Title of the Stage
-        stage.setTitle("Drawing Basic Shapes on a Canvas");
+        stage.setTitle("Killer Sokoban");
+        stage.getIcons().add(new Image("file:en.jpg"));
         // Display the Stage
         stage.setHeight(945);
         stage.setWidth(1018);
@@ -83,6 +90,15 @@ public class Main extends Application {
 
 
     }
+
+    public static void winner(String string) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Vege a jateknak!");
+        alert.setHeaderText("Jatek vege");
+        alert.setContentText(string);
+        alert.showAndWait();
+    }
+
     /**
      *
      * @param args
@@ -94,7 +110,7 @@ public class Main extends Application {
     public static void main(String[] args) throws IOException {
 
         game.startGame("testmap2.txt");
-        
+
         Application.launch(args);
 
 

@@ -32,10 +32,12 @@ public class Game
      */
     public void endGame() {
         ArrayList<Worker> players = warehouse.getPlayerList();
-        Worker player1 = players.get(0);
-        Worker player2 = players.get(1);
+        Worker player1 = warehouse.player_1;
+        Worker player2 = warehouse.player_2;
         if(player1.getPoint() == player2.getPoint()) {
             System.out.println("Tie!");
+            Main.winner("Dontetlen!");
+            System.exit(0);
         } else if(player1.getPoint() > player2.getPoint()) {
             player1.win();
         } else {

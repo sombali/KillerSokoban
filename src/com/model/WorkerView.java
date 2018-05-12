@@ -3,7 +3,8 @@ package com.model;
 import javafx.scene.image.Image;
 
 public class WorkerView implements Drawable {
-    private Image img = new Image("file:worker_1_final.png");
+    //private Image img = new Image("file:worker_1_final.png");
+    private Image img = new Image("file:en.png");
     private Image img2=new Image("file:worker_2_final.png");
     Worker w;
     public Image getImage() {
