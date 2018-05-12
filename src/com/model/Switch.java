@@ -42,9 +42,12 @@ public class Switch extends Field {
      */
     @Override
     public void stepOnIt(Pushable pushable) {
-        getTrapDoor().switchState();
 
         Element element = trapDoor.getElement();
+
+        getTrapDoor().switchState();
+
+
 
         if(element != null) {
             trapDoor.stepOnIt(element);

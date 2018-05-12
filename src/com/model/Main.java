@@ -6,9 +6,11 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -35,6 +37,42 @@ public class Main extends Application {
         Scene scene = new Scene(root);
         // Add the Scene to the Stage
 
+        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                switch(event.getCode()) {
+                    case UP: game.warehouse.player_1.move(Direction.SECOND); break;
+                    case RIGHT: game.warehouse.player_1.move(Direction.THIRD); break;
+                    case DOWN: game.warehouse.player_1.move(Direction.FOURTH); break;
+                    case LEFT: game.warehouse.player_1.move(Direction.FIRST); break;
+
+                    case W: game.warehouse.player_2.move(Direction.SECOND); break;
+                    case A: game.warehouse.player_2.move(Direction.FIRST); break;
+                    case S: game.warehouse.player_2.move(Direction.FOURTH); break;
+                    case D: game.warehouse.player_2.move(Direction.THIRD); break;
+                }
+                Game.view.drawAll();
+                Warehouse wh = game.getWarehouse();
+                Field[][] map = game.getWarehouse().getMap();
+
+                for(int i = 0; i < wh.getSizeRow(); i++) {
+                    for(int j = 0; j < wh.getSizeColumn(); j++) {
+                        Element element = map[i][j].getElement();
+                        Tools tools = map[i][j].getTools();
+                        if(element != null) {
+                            element.getDescription();
+                        } else if(tools != null) {
+                            tools.getDescription();
+                        } else {
+                            map[i][j].getDescription();
+                        }
+                    }
+
+                    System.out.print("\n");
+                }
+            }
+        });
+
         stage.setScene(scene);
         // Set the Title of the Stage
         stage.setTitle("Drawing Basic Shapes on a Canvas");
@@ -56,14 +94,7 @@ public class Main extends Application {
     public static void main(String[] args) throws IOException {
 
         game.startGame("testmap2.txt");
-
-        InputStreamReader isr = new InputStreamReader(System.in);
-        BufferedReader br = new BufferedReader(isr);
-
-        String command;
-        Player player1 = null;
-        Player player2 = null;
-
+        
         Application.launch(args);
 
 
