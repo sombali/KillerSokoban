@@ -491,6 +491,9 @@ public class Warehouse {
         System.out.println("TOLHATO LADAK SZAMA: " + pushableBoxes);
         if(num < 0 && (getMaxPoints()/10) > getPushableBoxes()) {
             setMaxPoints(-10);
+            if(player_1.getPoint() == getMaxPoints() || player_2.getPoint() == getMaxPoints()) {
+                getGame().endGame();
+            }
         }
         if(pushableBoxes == 0) {
             getGame().endGame();

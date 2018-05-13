@@ -140,16 +140,10 @@ public abstract class Pushable extends Element {
         nextField.stepOnIt(this);
         ArrayList<Pushable> pushableArrayList = getField().getWarehouse().getPushables();
         for(int i = 0; i < pushableArrayList.size(); i++) {
-            if(!(pushableArrayList.get(i).isStucked()))
-                pushableArrayList.get(i).stuck();
-        }
-        for(int i = 0; i < pushableArrayList.size(); i++) {
-            if(!(pushableArrayList.get(i).isStucked()))
-                pushableArrayList.get(i).stuck();
-        }
-        for(int i = pushableArrayList.size() - 1; i > 0; i--) {
-            if(!(pushableArrayList.get(i).isStucked()))
-                pushableArrayList.get(i).stuck();
+            for(int j = 0; j < pushableArrayList.size(); j++) {
+                if (!(pushableArrayList.get(j).isStucked()))
+                    pushableArrayList.get(j).stuck();
+            }
         }
 
     }

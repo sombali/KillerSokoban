@@ -88,7 +88,7 @@ public class Main extends Application {
         stage.setScene(scene);
         // Set the Title of the Stage
         stage.setTitle("Killer Sokoban");
-        stage.getIcons().add(new Image("file:en.png"));
+        stage.getIcons().add(new Image("file:boci.png"));
         // Display the Stage
         stage.setHeight(945);
         stage.setWidth(1018);
