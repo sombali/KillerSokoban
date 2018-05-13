@@ -97,6 +97,9 @@ public class TrapDoor extends Field {
     public void switchState() {
         if(state.equals(TrapDoorState.CLOSED)) {
             state = TrapDoorState.OPENED;
+            if(this.getTools() != null) {
+                this.getTools().removeTool();
+            }
         } else {
             state = TrapDoorState.CLOSED;
         }

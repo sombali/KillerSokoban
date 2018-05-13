@@ -138,18 +138,13 @@ public class Field {
      * @param element a mezőre lépett elem
      */
     public void stepOnIt(Element element) {
-
         removeElement(element);
         if(element.getDescription().equals("1")){
             warehouse.player_1.die();
-            warehouse.game.endGame();
         }
         if(element.getDescription().equals("2")){
             warehouse.player_2.die();
-            warehouse.game.endGame();
         }
-
-        //TODO
     }
 
     /**

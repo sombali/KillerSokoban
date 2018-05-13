@@ -223,7 +223,7 @@ public class Main extends Application {
             stage.setWidth(750);
             stage.show();
 
-            playMusic(musicFile);
+            //playMusic(musicFile);
         }
     }
 

@@ -50,7 +50,7 @@ public class Worker extends Player  {
     }
 
     public String getDescription() {
-        System.out.print(this.getName());
+        //System.out.print(this.getName());
         return getName();
     }
 }

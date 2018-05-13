@@ -33,6 +33,10 @@ public class Tools {
         this.changeFriction = changeFriction;
     }
 
+    public void removeTool() {
+        getField().setTools(null);
+    }
+
     /**
      * A tool-t tartalmazo mezo.
      */
