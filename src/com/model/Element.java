@@ -76,8 +76,8 @@ public class Element {
         return true;
     }
 
-    public void getDescription() {
-
+    public String getDescription() {
+return "";
     }
 
 }

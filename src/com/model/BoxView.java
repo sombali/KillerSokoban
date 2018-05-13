@@ -11,7 +11,7 @@ public class BoxView implements Drawable {
     }
 
     public void draw(int x, int y) {
-        Game.view.gc.drawImage(img, x, y, 100, 100);
+        Game.view.gc.drawImage(img, x, y, 90, 90);
     }
 
 }

@@ -7,7 +7,9 @@ public class TrapDoor extends Field {
 
     public TrapDoorView tv = new TrapDoorView();
 
-    public TrapDoorView getView(){
+    public TrapDoorView getView()
+    {
+        tv.h=this;
         return tv;
     }
 
@@ -32,14 +34,16 @@ public class TrapDoor extends Field {
         getWarehouse().removePushable(pushable);
         setElement(null);
     }
-    
+    public TrapDoorState getState(){
+        return state;
+    }
 
     /**
      * Eltávolítja a rajta álló játékost
      * @param player mezőn álló játékos
      */
     @Override
-    public void removeElement(Player player) {
+    public void removeElement(Element player) {
         setElement(null);
     }
     /**

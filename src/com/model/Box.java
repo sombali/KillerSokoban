@@ -35,8 +35,9 @@ public class Box extends Pushable{
         return super.hit(pushable, direction, friction);
     }
 
-    public void getDescription() {
+    public String getDescription() {
         System.out.print("x");
+        return "Box";
     }
 }
 

@@ -1,6 +1,8 @@
 package com.model;
 
 
+import com.sun.org.apache.xpath.internal.SourceTree;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -487,6 +489,7 @@ public class Warehouse {
      */
     public void setPushableBoxes(int num) {
         pushableBoxes += num;
+        System.out.println("TOLHATO LADAK SZAMA: " + pushableBoxes);
         if(pushableBoxes == 0) {
             getGame().endGame();
         }

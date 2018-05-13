@@ -22,14 +22,19 @@ public class View {
                 Element element = map[i][j].getElement();
                 Tools tools = map[i][j].getTools();
 
-                if(element!=null){
+                if(element!=null&&tools==null){
 
                         map[i][j].getView().draw(j*100, i*100);
                         map[i][j].getElement().getView().draw(j * 100, i * 100);
 
                 }
-                else if(tools != null)
-                    tools.getView().draw(j*100, i*100);
+                else if(tools != null&&element!=null) {
+                    tools.getView().draw(j * 100, i * 100);
+                    map[i][j].getElement().getView().draw(j * 100, i * 100);
+                }
+                else if(tools!=null&&element==null) {
+                    tools.getView().draw(j * 100, i * 100);
+                }
                 else{
                     map[i][j].getView().draw(j*100, i*100);
                 }

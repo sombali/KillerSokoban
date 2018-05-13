@@ -14,9 +14,9 @@ public class WorkerView implements Drawable {
 
     public void draw(int x, int y) {
         if(w.getName().equals("1"))
-        Game.view.gc.drawImage(img, x, y, 100, 100);
+        Game.view.gc.drawImage(img, x, y, 90, 90);
         else
-            Game.view.gc.drawImage(img2, x, y, 100, 100);
+            Game.view.gc.drawImage(img2, x, y, 90, 90);
 
     }
 }

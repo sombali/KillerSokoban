@@ -142,6 +142,10 @@ public abstract class Pushable extends Element {
             if(!(pushableArrayList.get(i).isStucked()))
                 pushableArrayList.get(i).stuck();
         }
+        for(int i = 0; i < pushableArrayList.size(); i++) {
+            if(!(pushableArrayList.get(i).isStucked()))
+                pushableArrayList.get(i).stuck();
+        }
         for(int i = pushableArrayList.size() - 1; i > 0; i--) {
             if(!(pushableArrayList.get(i).isStucked()))
                 pushableArrayList.get(i).stuck();
@@ -190,7 +194,7 @@ public abstract class Pushable extends Element {
         }
     }
 
-    public void getDescription() {
-
+    public String getDescription() {
+        return"";
     }
 }

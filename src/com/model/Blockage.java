@@ -42,7 +42,7 @@ Blockage extends Element{
         return false;
     }
 
-    public void getDescription() {
-
+    public String getDescription() {
+return"";
     }
 }

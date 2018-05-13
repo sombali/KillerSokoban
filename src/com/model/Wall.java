@@ -39,7 +39,8 @@ public class Wall extends Blockage {
         return false;
     }
 
-    public void getDescription() {
+    public String getDescription() {
         System.out.print("#");
+        return "";
     }
 }

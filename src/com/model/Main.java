@@ -113,6 +113,10 @@ public class Main extends Application {
 
         Application.launch(args);
 
+
+
+
+
         /*while ((command = br.readLine())!=null) {
 
            if(command.isEmpty())

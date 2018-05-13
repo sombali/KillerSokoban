@@ -30,7 +30,7 @@ public class Hole extends Field{
      * @param player 
      */
     @Override
-    public void removeElement(Player player) {
+    public void removeElement(Element player) {
         setElement(null);
     }
 

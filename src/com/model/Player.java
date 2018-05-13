@@ -84,7 +84,7 @@ public abstract class Player extends Element{
      * Ezzel rakjuk le a megfelelo mezore a Mezet
      */
     public void throwHoney(){
-        if(honey.size() > 0) {
+        if(honey.size() > 0 && isAlive()) {
             Tools h = getHoney();
             field.setTools(h);
             h.setField(this.field);
@@ -94,7 +94,7 @@ public abstract class Player extends Element{
      * Ezzel rakjuk le a megfelelo mezore az Olajat
      */
     public void throwOil(){
-        if(oil.size() > 0) {
+        if(oil.size() > 0 && isAlive()) {
             Tools h=getOil();
             field.setTools(h);
             h.setField(this.field);
@@ -160,18 +160,20 @@ public abstract class Player extends Element{
      * Ha meghal a játékos(pl: lyukba lép) akkor hívódik meg.
      */
     public void die() {
-        alive = false;
-        ArrayList<Worker> players = getField().getWarehouse().getPlayerList();
-        int count = 0;
-        for(int i = 0; i < players.size(); i++) {
-            if(!players.get(i).isAlive()) {
-                count++;
+
+            alive = false;
+            ArrayList<Worker> players = getField().getWarehouse().getPlayerList();
+            int count = 0;
+            for(int i = 0; i < players.size(); i++) {
+                if(!players.get(i).isAlive()) {
+                    count++;
+                }
+                if(players.size() == count) {
+                    getField().getWarehouse().getGame().endGame();
+                }
             }
-            if(players.size() == count) {
-                getField().getWarehouse().getGame().endGame();
-            }
-        }
     }
+
 
     /**
      *
@@ -247,8 +249,8 @@ public abstract class Player extends Element{
         nextField.stepOnIt(this);
     }
 
-    public void getDescription() {
-
+    public String getDescription() {
+return"";
             }
 
 }
