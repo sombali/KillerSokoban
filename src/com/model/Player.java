@@ -161,6 +161,16 @@ public abstract class Player extends Element{
      */
     public void die() {
         alive = false;
+        ArrayList<Worker> players = getField().getWarehouse().getPlayerList();
+        int count = 0;
+        for(int i = 0; i < players.size(); i++) {
+            if(!players.get(i).isAlive()) {
+                count++;
+            }
+            if(players.size() == count) {
+                getField().getWarehouse().getGame().endGame();
+            }
+        }
     }
 
     /**
