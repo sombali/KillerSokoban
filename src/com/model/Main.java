@@ -14,6 +14,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -40,6 +41,9 @@ public class Main extends Application {
     private Label label;
     ListView<String> listView;
 
+    private String name1;
+    private String name2;
+
 
     @Override
     public void start(Stage stage) {
@@ -48,15 +52,19 @@ public class Main extends Application {
         listView = new ListView<>();
         button = new Button("Submit");
         button2 = new Button("Help");
+
         label = new Label("Choose a map ! ");
+
         button.setPrefWidth(150);
         button2.setPrefHeight(20);
         button2.setPrefWidth(150);
+
         listView.getItems().addAll("testmap2.txt","testmap3.txt","testmap4.txt");
         listView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
         button.setOnAction(e->buttonClicked(stage));
         button2.setOnAction(e->buttonClicked2());
+
         VBox layout = new VBox(10);
         layout.setPadding(new Insets(20,20,20,20));
         layout.getChildren().addAll(label,listView,button,button2);
@@ -76,21 +84,62 @@ public class Main extends Application {
     }
     private void buttonClicked2(){
         Stage stage = new Stage();
-        Pane pane = new Pane();
-        Label label = new Label("Lama");
-        pane.getChildren().addAll(label);
-        Scene scene = new Scene(pane,300,300);
-        stage.setTitle("Helper");
+        VBox vb = new VBox(10);
+        Label label = new Label("Az első játékos a nyilakkal tud navigálni, az L billentyű megnyomásával olajat, a K billentyű pedig mézet tud eldobni.\n"+
+                " A második játékos a WASD billentyűkkel tud navigálni, az E billentyűvel olajat, a Q-val pedig mézet dob.\n" +
+                "Egy játékos 3 olajjal és 3 mézzel rendelkezik. Játékosnak annyi ereje van, hogy egyszerre 3 ládát tud eltolni. \n" +
+                "A játéknak csak akkor van vége:\n" +
+                "        1.     ha nincs több tolható láda\n" +
+                "        2.     ha egy játékos megszerezte a maximális pontok számát(ez a saját célmezők számával egyenlő - \n"+
+                "               de ha kevesebb tolható láda van, akkor értelemszerűen ez változik)\n" +
+                "        3.     ha mindkét játékos meghalt\n");
+
+        Button btn = new Button ("Close");
+        btn.setOnAction(e->Buton3Clicked(stage));
+
+
+
+        Image player1 = new Image("file:en.png");
+        Image player2 = new Image("file:worker_2_final.png");
+        Image tf1 = new Image("file:targetfield_1.png");
+        Image tf2 = new Image("file:targetfield_2.png");
+        ImageView iv1=new ImageView(player1);
+        ImageView iv2=new ImageView(player2);
+        ImageView iv3=new ImageView(tf1);
+        ImageView iv4=new ImageView(tf2);
+
+        iv1.setFitHeight(50);
+        iv1.setFitWidth(50);
+        iv2.setFitHeight(50);
+        iv2.setFitWidth(50);
+        iv3.setFitHeight(50);
+        iv3.setFitWidth(50);
+        iv4.setFitHeight(50);
+        iv4.setFitWidth(50);
+
+        Label label1 = new Label("Megfelelő Célmezők : ");
+        Label label2 = new Label("==========================");
+        vb.setPadding(new Insets(20,20,20,20));
+        vb.getChildren().addAll(label,label1,iv1,iv3,label2,iv2,iv4,btn);
+
+        Scene scene = new Scene(vb,300,300);
+
         stage.setScene(scene);
         // Set the Title of the Stage
-        stage.setTitle("Killer Sokoban");
+        stage.setTitle("Help!");
+
 
         // Display the Stage
-        stage.setHeight(250);
-        stage.setWidth(250);
+        stage.setHeight(580);
+        stage.setWidth(750);
 
         stage.show();
 
+    }
+
+    private void Buton3Clicked(Stage stage)
+    {
+        stage.close();
     }
     public void initGame(Stage stage,String map) {
         {
@@ -111,6 +160,9 @@ public class Main extends Application {
             // Create the Scene
             Scene scene = new Scene(root);
             // Add the Scene to the Stage
+
+            //game.getWarehouse().player_1.setName(name1);
+            //game.getWarehouse().player_2.setName(name2);
 
             scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
                 @Override
@@ -134,6 +186,8 @@ public class Main extends Application {
                         case K:
                             game.warehouse.player_1.throwHoney();
                             break;
+                        case M: game.warehouse.player_1.surrender(game.warehouse.player_2);
+                            break;
 
                         case W:
                             game.warehouse.player_2.move(Direction.SECOND);
@@ -153,10 +207,10 @@ public class Main extends Application {
                         case E:
                             game.warehouse.player_2.throwOil();
                             break;
+                        case Z: game.warehouse.player_2.surrender(game.warehouse.player_1);
+                            break;
                     }
                     Game.view.drawAll();
-                    Warehouse wh = game.getWarehouse();
-                    Field[][] map = game.getWarehouse().getMap();
                 }
             });
 
@@ -169,7 +223,7 @@ public class Main extends Application {
             stage.setWidth(750);
             stage.show();
 
-            playMusic(musicFile);
+            //playMusic(musicFile);
         }
     }
 

@@ -13,7 +13,10 @@ public abstract class Player extends Element{
      * A játékos nevét tárolja.
      */
     private String name;
-
+    /**
+     * A jatekos jatekbeli nevet tarolja
+     */
+    private String IGName;
     /**
      * életben van-e a játékos vagy sem
      */
@@ -34,7 +37,7 @@ public abstract class Player extends Element{
     public void setName(String name) {
         this.name = name;
     }
-
+    public void setIGName(String igname){this.IGName = igname;}
     /**
      * @param point A játékos pontját tárolja.
      */
@@ -155,7 +158,7 @@ public abstract class Player extends Element{
     public String getName() {
         return name;
     }
-
+    public String getIGName() { return IGName;}
     /**
      * Ha meghal a játékos(pl: lyukba lép) akkor hívódik meg.
      */
@@ -198,8 +201,7 @@ public abstract class Player extends Element{
      * A függvény meghívódik ha az egyik játékos nyert, tehát az összes saját területén láda áll.
      */
     public void win() {
-        System.out.println("Player " + getName() + " win!" );
-        Main.winner(this.getName() + " jatekos nyert!");
+        Main.winner(this.getIGName() + " WON!");
         System.exit(0);
 }
 

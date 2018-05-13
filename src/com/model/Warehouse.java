@@ -160,7 +160,6 @@ public class Warehouse {
      */
     public void setMaxPoints(int points) {
         maxPoints += points;
-        System.out.println("MAXPOINT" + maxPoints);
     }
     /**
      * Beolvassa a pálya txt fájlt, majd inicializálja a pályát belőle
@@ -198,11 +197,8 @@ public class Warehouse {
             String[] a = line.split(" ");
             for (int i = 0; i < a.length; i++) {
                 map[row][i] = spawn_element(a[i]);
-                System.out.print(a[i]);
             }
-
             row++;
-            System.out.print("\n");
 
         }
 
@@ -330,6 +326,7 @@ public class Warehouse {
 
                 //vegso megoldasnal majd adhatunk custom nevet is akar
                 player_1.setName("1");
+                player_1.setIGName("Bazsi");
                 player_1.setField(field2);
                 field2.setElement(player_1);
                 playerList.add(player_1);
@@ -345,6 +342,7 @@ public class Warehouse {
 
                 //vegso megoldasnal majd adhatunk custom nevet is akar
                 player_2.setName("2");
+                player_2.setIGName("Dani");
                 player_2.setField(field3);
                 field3.setElement(player_2);
                 playerList.add(player_2);
@@ -488,7 +486,6 @@ public class Warehouse {
      */
     public void setPushableBoxes(int num) {
         pushableBoxes += num;
-        System.out.println("TOLHATO LADAK SZAMA: " + pushableBoxes);
         if(num < 0 && (getMaxPoints()/10) > getPushableBoxes()) {
             setMaxPoints(-10);
             if(player_1.getPoint() == getMaxPoints() || player_2.getPoint() == getMaxPoints()) {
