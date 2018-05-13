@@ -33,7 +33,7 @@ public class TargetFieldView implements Drawable {
         if(t.getPlayer().getName().equals("1"))
         Game.view.gc.drawImage(img, x, y, 50, 50);
         else
-            Game.view.gc.drawImage(img2, x, y, 50, 50);
+            Game.view.gc.drawImage(img2, x, y, 50, 530);
 
     }
 }
