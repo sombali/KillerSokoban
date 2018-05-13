@@ -59,7 +59,7 @@ public class Main extends Application {
         button2.setPrefHeight(20);
         button2.setPrefWidth(150);
 
-        listView.getItems().addAll("testmap2.txt","testmap3.txt","testmap4.txt");
+        listView.getItems().addAll("map1.txt","map2.txt","map3.txt");
         listView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
         button.setOnAction(e->buttonClicked(stage));

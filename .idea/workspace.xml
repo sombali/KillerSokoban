@@ -2,24 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="516abfe4-f509-4ada-b862-a9559e09f519" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/boci.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/en.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/KillerSokoban/com/model/Main$1.class" afterPath="$PROJECT_DIR$/out/production/KillerSokoban/com/model/Main$1.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/KillerSokoban/com/model/Main$2.class" afterPath="$PROJECT_DIR$/out/production/KillerSokoban/com/model/Main$2.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/KillerSokoban/com/model/Main.class" afterPath="$PROJECT_DIR$/out/production/KillerSokoban/com/model/Main.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/KillerSokoban/com/model/Player.class" afterPath="$PROJECT_DIR$/out/production/KillerSokoban/com/model/Player.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/KillerSokoban/com/model/Warehouse.class" afterPath="$PROJECT_DIR$/out/production/KillerSokoban/com/model/Warehouse.class" />
-      <change beforePath="$PROJECT_DIR$/src/com/model/Game.java" afterPath="$PROJECT_DIR$/src/com/model/Game.java" />
       <change beforePath="$PROJECT_DIR$/src/com/model/Main.java" afterPath="$PROJECT_DIR$/src/com/model/Main.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/model/Player.java" afterPath="$PROJECT_DIR$/src/com/model/Player.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/model/Warehouse.java" afterPath="$PROJECT_DIR$/src/com/model/Warehouse.java" />
-      <change beforePath="$PROJECT_DIR$/test.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/testmap2.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/testmap3.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/testmap4.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/worker_1_final.png" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -72,11 +55,11 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/model/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1688">
-              <caret line="142" column="5" lean-forward="false" selection-start-line="142" selection-start-column="5" selection-end-line="142" selection-end-column="5" />
+            <state relative-caret-position="197">
+              <caret line="233" column="37" lean-forward="true" selection-start-line="233" selection-start-column="37" selection-end-line="233" selection-end-column="37" />
               <folding>
-                <element signature="e#4657#4658#0" expanded="true" />
-                <element signature="e#4686#4687#0" expanded="true" />
+                <element signature="e#4645#4646#0" expanded="true" />
+                <element signature="e#4674#4675#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -540,8 +523,8 @@
         <state relative-caret-position="819">
           <caret line="74" column="41" lean-forward="true" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="41" />
           <folding>
-            <element signature="e#4657#4658#0" expanded="true" />
-            <element signature="e#4686#4687#0" expanded="true" />
+            <element signature="e#4645#4646#0" expanded="true" />
+            <element signature="e#4674#4675#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -551,7 +534,7 @@
         <state relative-caret-position="17388">
           <caret line="828" column="12" lean-forward="false" selection-start-line="828" selection-start-column="12" selection-end-line="828" selection-end-column="12" />
           <folding>
-            <marker date="1526250898563" expanded="true" signature="50525:50542" ph="..." />
+            <marker date="1526251087135" expanded="true" signature="50525:50542" ph="..." />
           </folding>
         </state>
       </provider>
@@ -843,11 +826,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/model/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1688">
-          <caret line="142" column="5" lean-forward="false" selection-start-line="142" selection-start-column="5" selection-end-line="142" selection-end-column="5" />
+        <state relative-caret-position="197">
+          <caret line="233" column="37" lean-forward="true" selection-start-line="233" selection-start-column="37" selection-end-line="233" selection-end-column="37" />
           <folding>
-            <element signature="e#4657#4658#0" expanded="true" />
-            <element signature="e#4686#4687#0" expanded="true" />
+            <element signature="e#4645#4646#0" expanded="true" />
+            <element signature="e#4674#4675#0" expanded="true" />
           </folding>
         </state>
       </provider>
