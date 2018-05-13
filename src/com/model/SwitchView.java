@@ -25,7 +25,7 @@ public class SwitchView implements Drawable {
      * @param y Kirajzolási y koordináta.
      */
     public void draw(int x, int y) {
-        Game.view.gc.drawImage(img, x, y, 100, 100);
+        Game.view.gc.drawImage(img, x, y, 50, 50);
     }
 
 }

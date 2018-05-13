@@ -138,13 +138,14 @@ public abstract class Pushable extends Element {
         getField().removeElement(this);
         nextField.acceptElement(this);
         nextField.stepOnIt(this);
-        ArrayList<Pushable> pushableArrayList = getField().getWarehouse().getPushables();
+        this.stuck();
+        /*ArrayList<Pushable> pushableArrayList = getField().getWarehouse().getPushables();
         for(int i = 0; i < pushableArrayList.size(); i++) {
             for(int j = 0; j < pushableArrayList.size(); j++) {
                 if (!(pushableArrayList.get(j).isStucked()))
                     pushableArrayList.get(j).stuck();
             }
-        }
+        }*/
 
     }
 
@@ -153,6 +154,7 @@ public abstract class Pushable extends Element {
      * A függvény ami ellenőrzi, hogy egy láda mozgatható állapotban van vagy sem. Ha két szomszédos mezője is stucked, azaz nem lehet mozgatni,
      * akkor ő maga is ilyen állapotba kerül
      */
+    @Override
     public void stuck() {
         if(getField().getNeighbors(Direction.FIRST).getElement() != null && getField().getNeighbors(Direction.FIRST).getElement().isStucked()) {
             if(getField().getNeighbors(Direction.SECOND).getElement() != null && getField().getNeighbors(Direction.SECOND).getElement().isStucked()) {
@@ -187,8 +189,16 @@ public abstract class Pushable extends Element {
                 getField().getWarehouse().setPushableBoxes(-1);
             }
         }
-    }
 
+        if(getField().getNeighbors((Direction.FIRST)).getElement() != null &&  !(getField().getNeighbors((Direction.FIRST)).getElement().isStucked()))
+            getField().getNeighbors((Direction.FIRST)).getElement().stuck();
+        if(getField().getNeighbors((Direction.SECOND)).getElement() != null &&  !(getField().getNeighbors((Direction.SECOND)).getElement().isStucked()))
+            getField().getNeighbors((Direction.SECOND)).getElement().stuck();
+        if(getField().getNeighbors((Direction.THIRD)).getElement() != null &&  !(getField().getNeighbors((Direction.THIRD)).getElement().isStucked()))
+            getField().getNeighbors((Direction.THIRD)).getElement().stuck();
+        if(getField().getNeighbors((Direction.FOURTH)).getElement() != null &&  !(getField().getNeighbors((Direction.FOURTH)).getElement().isStucked()))
+            getField().getNeighbors((Direction.FOURTH)).getElement().stuck();
+    }
     public String getDescription() {
         return"";
     }

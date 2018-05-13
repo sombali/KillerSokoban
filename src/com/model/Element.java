@@ -14,6 +14,10 @@ public class Element {
      */
     Field field;
 
+    public void stuck() {
+
+    }
+
     /**
      *
      */

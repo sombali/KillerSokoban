@@ -27,10 +27,10 @@ public class TrapDoorView implements Drawable {
     public void draw(int x, int y) {
         TrapDoorState tr;
         if(h.getState()==TrapDoorState.OPENED)
-            Game.view.gc.drawImage(img2, x, y, 100, 100);
+            Game.view.gc.drawImage(img2, x, y, 50, 50);
 
         else
-            Game.view.gc.drawImage(img, x, y, 100, 100);
+            Game.view.gc.drawImage(img, x, y, 50, 50);
 
     }
 

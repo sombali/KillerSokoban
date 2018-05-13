@@ -30,19 +30,19 @@ public class View {
 
                 if(element!=null&&tools==null){
 
-                        map[i][j].getView().draw(j*100, i*100);
-                        map[i][j].getElement().getView().draw(j * 100, i * 100);
+                        map[i][j].getView().draw(j*50, i*50);
+                        map[i][j].getElement().getView().draw(j * 50, i * 50);
 
                 }
                 else if(tools != null&&element!=null) {
-                    tools.getView().draw(j * 100, i * 100);
-                    map[i][j].getElement().getView().draw(j * 100, i * 100);
+                    tools.getView().draw(j * 50, i * 50);
+                    map[i][j].getElement().getView().draw(j * 50, i * 50);
                 }
                 else if(tools!=null&&element==null) {
-                    tools.getView().draw(j * 100, i * 100);
+                    tools.getView().draw(j * 50, i * 50);
                 }
                 else{
-                    map[i][j].getView().draw(j*100, i*100);
+                    map[i][j].getView().draw(j*50, i*50);
                 }
                 //element.draw(j*100, i*100);
 

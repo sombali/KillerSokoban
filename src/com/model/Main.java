@@ -67,7 +67,7 @@ public class Main extends Application {
                 Warehouse wh = game.getWarehouse();
                 Field[][] map = game.getWarehouse().getMap();
 
-                for(int i = 0; i < wh.getSizeRow(); i++) {
+                /*for(int i = 0; i < wh.getSizeRow(); i++) {
                     for(int j = 0; j < wh.getSizeColumn(); j++) {
                         Element element = map[i][j].getElement();
                         Tools tools = map[i][j].getTools();
@@ -81,7 +81,7 @@ public class Main extends Application {
                     }
 
                     System.out.print("\n");
-                }
+                }*/
             }
         });
 
