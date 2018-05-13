@@ -7,11 +7,17 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+/**
+ * A kirajzolás koordinálását végző osztály.
+ */
 public class View {
 
     Canvas canvas = new Canvas(600, 600);
     GraphicsContext gc = canvas.getGraphicsContext2D();
 
+    /**
+     * Végigveszi az elemeket és kirajzolja őket.
+     */
     public void drawAll() {
 
         Warehouse wh = Main.game.getWarehouse();
