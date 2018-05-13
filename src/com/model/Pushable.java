@@ -137,6 +137,7 @@ public abstract class Pushable extends Element {
     public void step(Field nextField) {
         getField().removeElement(this);
         nextField.acceptElement(this);
+        nextField.stepOnIt(this);
         ArrayList<Pushable> pushableArrayList = getField().getWarehouse().getPushables();
         for(int i = 0; i < pushableArrayList.size(); i++) {
             if(!(pushableArrayList.get(i).isStucked()))
@@ -150,7 +151,7 @@ public abstract class Pushable extends Element {
             if(!(pushableArrayList.get(i).isStucked()))
                 pushableArrayList.get(i).stuck();
         }
-        nextField.stepOnIt(this);
+
     }
 
 

@@ -73,10 +73,9 @@ public class TrapDoor extends Field {
         if(state.equals(TrapDoorState.OPENED)) {
             removeElement(pushable);
             getWarehouse().setPushableBoxes(-1);
-            if((getWarehouse().getMaxPoints()/10) >= getWarehouse().getPushableBoxes()) getWarehouse().setMaxPoints(-10);
         } else {
             super.stepOnIt(pushable);
-    }
+        }
     }
 
     /**

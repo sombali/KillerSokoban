@@ -1,6 +1,7 @@
 package com.model;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -14,6 +15,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 /**
@@ -22,6 +25,9 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     static Game game = new Game();
+    private static MediaPlayer mediaPlayer;
+
+    private static final String musicFile = "muzsika.mp3";
 
     @Override
     public void start(Stage stage) {
@@ -82,11 +88,13 @@ public class Main extends Application {
         stage.setScene(scene);
         // Set the Title of the Stage
         stage.setTitle("Killer Sokoban");
-        stage.getIcons().add(new Image("file:en.jpg"));
+        stage.getIcons().add(new Image("file:en.png"));
         // Display the Stage
         stage.setHeight(945);
         stage.setWidth(1018);
         stage.show();
+
+        playMusic(musicFile);
 
 
     }
@@ -97,6 +105,17 @@ public class Main extends Application {
         alert.setHeaderText("Jatek vege");
         alert.setContentText(string);
         alert.showAndWait();
+    }
+
+    /**
+     * Zene elindítása.
+     * @param musicFile
+     */
+    public void playMusic(String musicFile) {
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.play();
     }
 
     /**

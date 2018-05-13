@@ -160,6 +160,7 @@ public class Warehouse {
      */
     public void setMaxPoints(int points) {
         maxPoints += points;
+        System.out.println("MAXPOINT" + maxPoints);
     }
     /**
      * Beolvassa a pálya txt fájlt, majd inicializálja a pályát belőle
@@ -294,10 +295,8 @@ public class Warehouse {
 
 
         }
-
-
         br.close();
-        }
+    }
 
 
     /**
@@ -490,6 +489,9 @@ public class Warehouse {
     public void setPushableBoxes(int num) {
         pushableBoxes += num;
         System.out.println("TOLHATO LADAK SZAMA: " + pushableBoxes);
+        if(num < 0 && (getMaxPoints()/10) > getPushableBoxes()) {
+            setMaxPoints(-10);
+        }
         if(pushableBoxes == 0) {
             getGame().endGame();
         }

@@ -60,7 +60,6 @@ public class Hole extends Field{
     public void stepOnIt(Pushable pushable) {
         removeElement(pushable);
         getWarehouse().setPushableBoxes(-1);
-        if((getWarehouse().getMaxPoints()/10) >= getWarehouse().getPushableBoxes()) getWarehouse().setMaxPoints(-10);
     }
 
     /**
