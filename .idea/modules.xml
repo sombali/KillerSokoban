@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/KillerSokoban.iml" filepath="$PROJECT_DIR$/KillerSokoban.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Soki.iml" filepath="$PROJECT_DIR$/Soki.iml" />
     </modules>
   </component>
 </project>
