@@ -1,1 +1,1 @@
-"# killer_proto" 
+KillerSokoban game for a school project.
